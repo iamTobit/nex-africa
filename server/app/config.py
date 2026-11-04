@@ -17,10 +17,20 @@ def fix_database_url(url: str) -> str:
     elif url.startswith("postgresql://") and not url.startswith("postgresql+"):
         url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
 
-    # Ensure sslmode=require for Supabase PostgreSQL connections if not already present
-    if ("supabase.co" in url or "supabase.com" in url) and "sslmode=" not in url:
-        separator = "&" if "?" in url else "?"
-        url = f"{url}{separator}sslmode=require"
+    # Fix malformed query string where '&' was used instead of '?' after database name
+    # (e.g. "...:5432/postgres&sslmode=require" -> "...:5432/postgres?sslmode=require")
+    scheme_sep = url.find("://")
+    last_slash = url.rfind("/")
+    if last_slash > scheme_sep + 2:
+        db_and_query = url[last_slash + 1 :]
+        if "&" in db_and_query and "?" not in db_and_query:
+            db_and_query = db_and_query.replace("&", "?", 1)
+            url = url[: last_slash + 1] + db_and_query
+
+        # Ensure sslmode=require for Supabase PostgreSQL connections if not already present
+        if ("supabase.co" in url or "supabase.com" in url) and "sslmode=" not in db_and_query:
+            separator = "&" if "?" in db_and_query else "?"
+            url = f"{url}{separator}sslmode=require"
 
     return url
 
