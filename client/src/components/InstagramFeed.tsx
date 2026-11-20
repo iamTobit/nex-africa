@@ -3,6 +3,7 @@ import { api } from '../services/api';
 import { InstagramPost } from '../types';
 import { Heart, MessageCircle, ExternalLink } from 'lucide-react';
 import { InstagramIcon } from './InstagramIcon';
+import { resolveImageUrl, handleImageError } from '../utils/images';
 
 interface InstagramFeedProps {
   nicheSlug: string;
@@ -12,7 +13,7 @@ interface InstagramFeedProps {
 export const InstagramFeed: React.FC<InstagramFeedProps> = ({ nicheSlug, themeColor }) => {
   const [handle, setHandle] = useState<string>(`@${nicheSlug}`);
   const [posts, setPosts] = useState<InstagramPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -30,8 +31,10 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({ nicheSlug, themeCo
     return () => { isMounted = false; };
   }, [nicheSlug]);
 
+  const effectiveColor = themeColor === '#111111' ? '#FFFFFF' : themeColor;
+
   return (
-    <section className="section-padding-sm" style={{ borderTop: '1px solid rgba(17, 17, 17, 0.08)' }}>
+    <section className="section-padding-sm" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.12)', backgroundColor: '#000000' }}>
       <div className="container">
         {/* Header with Instagram Handle */}
         <div
@@ -45,11 +48,11 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({ nicheSlug, themeCo
           }}
         >
           <div>
-            <span className="label-smallcaps" style={{ color: themeColor, marginBottom: '0.4rem', display: 'flex' }}>
+            <span className="label-smallcaps" style={{ color: effectiveColor, marginBottom: '0.4rem', display: 'flex' }}>
               <InstagramIcon size={14} />
               <span>Live Dispatches</span>
             </span>
-            <h3 style={{ fontSize: '1.65rem' }}>Visual Chronicles</h3>
+            <h3 style={{ fontSize: '1.65rem', color: '#FFFFFF' }}>Visual Chronicles</h3>
           </div>
 
           <a
@@ -74,7 +77,12 @@ export const InstagramFeed: React.FC<InstagramFeedProps> = ({ nicheSlug, themeCo
               rel="noreferrer"
               className="instagram-card"
             >
-              <img src={post.image_url} alt={post.caption} loading="lazy" />
+              <img
+                src={resolveImageUrl(post.image_url)}
+                alt={post.caption}
+                onError={(e) => handleImageError(e)}
+                loading="lazy"
+              />
               <div className="instagram-overlay">
                 <p
                   style={{

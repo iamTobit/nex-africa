@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { NexLogo } from './NexLogo';
 import { ActivePage } from '../types';
-import { ChevronDown, Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: ActivePage;
@@ -50,8 +50,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       slug: 'nexevents-africa' as ActivePage,
       name: 'NexEvents Africa',
       desc: 'Nairobi cultural calendar & ecosystem galas',
-      color: '#111111',
-      symbolism: 'Live gatherings (Upcoming)',
+      color: '#FFFFFF',
+      symbolism: 'Live gatherings',
+    },
+    {
+      slug: 'magazine' as ActivePage,
+      name: 'NexMagazine',
+      desc: 'Editorial issues, essays & visual chronicles',
+      color: '#FFFFFF',
+      symbolism: 'Editorial & print',
     },
   ];
 
@@ -62,9 +69,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const isNicheActive = ['nexart-africa', 'nexstudios-africa', 'nexafricuisine', 'nexevents-africa'].includes(
-    currentPage
-  );
+  const isNicheActive = [
+    'nexart-africa',
+    'nexstudios-africa',
+    'nexafricuisine',
+    'nexevents-africa',
+  ].includes(currentPage);
 
   return (
     <header
@@ -72,29 +82,29 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: 'rgba(245, 243, 239, 0.92)',
+        backgroundColor: 'rgba(0, 0, 0, 0.92)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(17, 17, 17, 0.08)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
         transition: 'background-color 200ms ease',
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
-        {/* Main Brand Wordmark (Site-wide black group version) */}
+        {/* Main Brand Wordmark (White on Black) */}
         <div onClick={() => handleNav('home')} style={{ cursor: 'pointer' }} id="nav-brand-logo">
           <NexLogo variant="group" size="md" />
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.85rem' }} className="desktop-nav">
           <button
             onClick={() => handleNav('home')}
             style={{
               fontWeight: currentPage === 'home' ? 700 : 500,
-              color: currentPage === 'home' ? '#111111' : '#5A5751',
+              color: currentPage === 'home' ? '#FFFFFF' : '#BFBFBF',
               fontSize: '0.92rem',
               letterSpacing: '0.02em',
               padding: '0.5rem 0',
-              borderBottom: currentPage === 'home' ? '2px solid #111111' : '2px solid transparent',
+              borderBottom: currentPage === 'home' ? '2px solid #FFFFFF' : '2px solid transparent',
             }}
           >
             Home
@@ -109,11 +119,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 alignItems: 'center',
                 gap: '0.35rem',
                 fontWeight: isNicheActive ? 700 : 500,
-                color: isNicheActive ? '#111111' : '#5A5751',
+                color: isNicheActive ? '#FFFFFF' : '#BFBFBF',
                 fontSize: '0.92rem',
                 letterSpacing: '0.02em',
                 padding: '0.5rem 0',
-                borderBottom: isNicheActive ? '2px solid #111111' : '2px solid transparent',
+                borderBottom: isNicheActive ? '2px solid #FFFFFF' : '2px solid transparent',
               }}
               id="our-niches-dropdown-btn"
             >
@@ -134,10 +144,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   top: 'calc(100% + 12px)',
                   left: '-40px',
                   width: '320px',
-                  backgroundColor: '#FFFFFF',
+                  backgroundColor: '#0C0C0C',
                   borderRadius: '10px',
-                  boxShadow: '0 16px 40px rgba(17, 17, 17, 0.12)',
-                  border: '1px solid rgba(17, 17, 17, 0.08)',
+                  boxShadow: '0 20px 48px rgba(0, 0, 0, 0.85)',
+                  border: '1px solid rgba(255, 255, 255, 0.16)',
                   padding: '0.75rem',
                   display: 'flex',
                   flexDirection: 'column',
@@ -145,8 +155,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   animation: 'fadeIn 180ms ease',
                 }}
               >
-                <div style={{ padding: '0.4rem 0.6rem 0.2rem', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
-                  <span className="label-smallcaps" style={{ color: '#8A867E' }}>The Creative Ecosystem</span>
+                <div style={{ padding: '0.4rem 0.6rem 0.4rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                  <span className="label-smallcaps" style={{ color: '#808080' }}>The Creative Ecosystem</span>
                 </div>
                 {niches.map((niche) => (
                   <div
@@ -160,12 +170,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                       alignItems: 'flex-start',
                       gap: '0.75rem',
                       transition: 'background-color 150ms ease',
-                      backgroundColor: currentPage === niche.slug ? 'rgba(17,17,17,0.04)' : 'transparent',
+                      backgroundColor: currentPage === niche.slug ? 'rgba(255,255,255,0.08)' : 'transparent',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(17,17,17,0.04)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)')}
                     onMouseLeave={(e) =>
                       (e.currentTarget.style.backgroundColor =
-                        currentPage === niche.slug ? 'rgba(17,17,17,0.04)' : 'transparent')
+                        currentPage === niche.slug ? 'rgba(255,255,255,0.08)' : 'transparent')
                     }
                   >
                     <span
@@ -179,8 +189,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                       }}
                     />
                     <div>
-                      <div style={{ fontWeight: 600, fontSize: '0.92rem', color: '#111111' }}>{niche.name}</div>
-                      <div style={{ fontSize: '0.78rem', color: '#5A5751', marginTop: '2px', lineHeight: 1.3 }}>
+                      <div style={{ fontWeight: 600, fontSize: '0.92rem', color: '#FFFFFF' }}>{niche.name}</div>
+                      <div style={{ fontSize: '0.78rem', color: '#BFBFBF', marginTop: '2px', lineHeight: 1.3 }}>
                         {niche.desc}
                       </div>
                     </div>
@@ -191,14 +201,28 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           </div>
 
           <button
-            onClick={() => handleNav('about')}
+            onClick={() => handleNav('magazine')}
             style={{
-              fontWeight: currentPage === 'about' ? 700 : 500,
-              color: currentPage === 'about' ? '#111111' : '#5A5751',
+              fontWeight: currentPage === 'magazine' ? 700 : 500,
+              color: currentPage === 'magazine' ? '#FFFFFF' : '#BFBFBF',
               fontSize: '0.92rem',
               letterSpacing: '0.02em',
               padding: '0.5rem 0',
-              borderBottom: currentPage === 'about' ? '2px solid #111111' : '2px solid transparent',
+              borderBottom: currentPage === 'magazine' ? '2px solid #FFFFFF' : '2px solid transparent',
+            }}
+          >
+            Magazine
+          </button>
+
+          <button
+            onClick={() => handleNav('about')}
+            style={{
+              fontWeight: currentPage === 'about' ? 700 : 500,
+              color: currentPage === 'about' ? '#FFFFFF' : '#BFBFBF',
+              fontSize: '0.92rem',
+              letterSpacing: '0.02em',
+              padding: '0.5rem 0',
+              borderBottom: currentPage === 'about' ? '2px solid #FFFFFF' : '2px solid transparent',
             }}
           >
             About & Vision
@@ -208,39 +232,39 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             onClick={() => handleNav('nexevents-africa')}
             style={{
               fontWeight: currentPage === 'nexevents-africa' ? 700 : 500,
-              color: currentPage === 'nexevents-africa' ? '#111111' : '#5A5751',
+              color: currentPage === 'nexevents-africa' ? '#FFFFFF' : '#BFBFBF',
               fontSize: '0.92rem',
               letterSpacing: '0.02em',
               padding: '0.5rem 0',
-              borderBottom: currentPage === 'nexevents-africa' ? '2px solid #111111' : '2px solid transparent',
+              borderBottom: currentPage === 'nexevents-africa' ? '2px solid #FFFFFF' : '2px solid transparent',
             }}
           >
-            Events & Calendar
+            Events
           </button>
 
           <button
-            onClick={() => handleNav('partner-invest')}
+            onClick={() => handleNav('partner')}
             style={{
-              fontWeight: currentPage === 'partner-invest' ? 700 : 500,
-              color: currentPage === 'partner-invest' ? '#111111' : '#5A5751',
+              fontWeight: currentPage === 'partner' ? 700 : 500,
+              color: currentPage === 'partner' ? '#FFFFFF' : '#BFBFBF',
               fontSize: '0.92rem',
               letterSpacing: '0.02em',
               padding: '0.5rem 0',
-              borderBottom: currentPage === 'partner-invest' ? '2px solid #111111' : '2px solid transparent',
+              borderBottom: currentPage === 'partner' ? '2px solid #FFFFFF' : '2px solid transparent',
             }}
           >
-            Partner / Invest
+            Partner
           </button>
 
           <button
             onClick={() => handleNav('contact')}
             style={{
               fontWeight: currentPage === 'contact' ? 700 : 500,
-              color: currentPage === 'contact' ? '#111111' : '#5A5751',
+              color: currentPage === 'contact' ? '#FFFFFF' : '#BFBFBF',
               fontSize: '0.92rem',
               letterSpacing: '0.02em',
               padding: '0.5rem 0',
-              borderBottom: currentPage === 'contact' ? '2px solid #111111' : '2px solid transparent',
+              borderBottom: currentPage === 'contact' ? '2px solid #FFFFFF' : '2px solid transparent',
             }}
           >
             Contact
@@ -250,7 +274,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         {/* Right CTA Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <button
-            onClick={() => handleNav('partner-invest')}
+            onClick={() => handleNav('partner')}
             className="btn btn-primary"
             style={{
               padding: '0.65rem 1.25rem',
@@ -260,14 +284,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             }}
             id="nav-partner-cta"
           >
-            <span>Partner / Invest</span>
+            <span>Partner With Us</span>
             <ArrowUpRight size={15} />
           </button>
 
           {/* Mobile Menu Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{ padding: '0.5rem', color: '#111111', display: 'none' }}
+            style={{ padding: '0.5rem', color: '#FFFFFF', display: 'none' }}
             className="mobile-menu-btn"
             aria-label="Toggle navigation"
           >
@@ -280,8 +304,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       {mobileMenuOpen && (
         <div
           style={{
-            backgroundColor: '#FFFFFF',
-            borderBottom: '1px solid rgba(17,17,17,0.1)',
+            backgroundColor: '#0A0A0A',
+            borderBottom: '1px solid rgba(255,255,255,0.14)',
             padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
@@ -290,13 +314,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         >
           <button
             onClick={() => handleNav('home')}
-            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#111111' }}
+            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#FFFFFF' }}
           >
             Home
           </button>
 
-          <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', paddingTop: '0.85rem' }}>
-            <span className="label-smallcaps" style={{ color: '#8A867E', marginBottom: '0.6rem', display: 'block' }}>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '0.85rem' }}>
+            <span className="label-smallcaps" style={{ color: '#808080', marginBottom: '0.6rem', display: 'block' }}>
               Our Niches
             </span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', paddingLeft: '0.5rem' }}>
@@ -304,7 +328,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 <div
                   key={n.slug}
                   onClick={() => handleNav(n.slug)}
-                  style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer', color: '#FFFFFF' }}
                 >
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: n.color }} />
                   <span style={{ fontSize: '0.95rem', fontWeight: 500 }}>{n.name}</span>
@@ -314,26 +338,32 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           </div>
 
           <button
+            onClick={() => handleNav('magazine')}
+            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#FFFFFF', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '0.85rem' }}
+          >
+            Magazine
+          </button>
+          <button
             onClick={() => handleNav('about')}
-            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#111111', borderTop: '1px solid rgba(17,17,17,0.08)', paddingTop: '0.85rem' }}
+            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#FFFFFF' }}
           >
             About & Vision
           </button>
           <button
             onClick={() => handleNav('nexevents-africa')}
-            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#111111' }}
+            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#FFFFFF' }}
           >
             Events & Calendar
           </button>
           <button
-            onClick={() => handleNav('partner-invest')}
-            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#111111' }}
+            onClick={() => handleNav('partner')}
+            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#FFFFFF' }}
           >
-            Partner / Invest
+            Partner
           </button>
           <button
             onClick={() => handleNav('contact')}
-            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#111111' }}
+            style={{ textAlign: 'left', fontWeight: 600, fontSize: '1.05rem', color: '#FFFFFF' }}
           >
             Contact
           </button>

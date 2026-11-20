@@ -51,7 +51,7 @@ export const CateringInquiryModal: React.FC<Props> = ({ isOpen, onClose }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#5A5751' }}
+          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#BFBFBF' }}
           aria-label="Close modal"
         >
           <X size={20} />
@@ -59,11 +59,11 @@ export const CateringInquiryModal: React.FC<Props> = ({ isOpen, onClose }) => {
 
         {success ? (
           <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <CheckCircle size={52} color="#2F6B3A" style={{ margin: '0 auto 1.25rem' }} />
-            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif" }}>
+            <CheckCircle size={52} color="#55B367" style={{ margin: '0 auto 1.25rem' }} />
+            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
               Catering Inquiry Received
             </h3>
-            <p style={{ color: '#5A5751', marginBottom: '2rem' }}>
+            <p style={{ color: '#BFBFBF', marginBottom: '2rem' }}>
               Thank you! Our executive culinary curator will contact you with sample multi-course heritage tasting menus
               and beverage pairing proposals.
             </p>
@@ -74,12 +74,12 @@ export const CateringInquiryModal: React.FC<Props> = ({ isOpen, onClose }) => {
         ) : (
           <div>
             <div style={{ marginBottom: '1.75rem' }}>
-              <span className="label-smallcaps" style={{ color: '#2F6B3A', marginBottom: '0.4rem', display: 'flex' }}>
+              <span className="label-smallcaps" style={{ color: '#55B367', marginBottom: '0.4rem', display: 'flex' }}>
                 <UtensilsCrossed size={13} />
                 <span>NexAfriCuisine Bespoke Dining</span>
               </span>
-              <h3 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif" }}>Catering & Private Dining</h3>
-              <p style={{ fontSize: '0.92rem', color: '#5A5751', marginTop: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>Catering & Private Dining</h3>
+              <p style={{ fontSize: '0.92rem', color: '#BFBFBF', marginTop: '0.35rem' }}>
                 Bring our celebrated African culinary heritage to your corporate gala, private supper club, or intimate gathering.
               </p>
             </div>

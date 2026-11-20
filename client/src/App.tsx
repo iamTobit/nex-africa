@@ -8,7 +8,9 @@ import { ArtPage } from './pages/ArtPage';
 import { StudiosPage } from './pages/StudiosPage';
 import { CuisinePage } from './pages/CuisinePage';
 import { EventsPage } from './pages/EventsPage';
-import { PartnerInvestPage } from './pages/PartnerInvestPage';
+import { MagazinePage } from './pages/MagazinePage';
+import { PartnerPage } from './pages/PartnerPage';
+import { InvestorsPage } from './pages/InvestorsPage';
 import { ContactPage } from './pages/ContactPage';
 
 export function App() {
@@ -25,11 +27,14 @@ export function App() {
         'nexstudios-africa',
         'nexafricuisine',
         'nexevents-africa',
+        'magazine',
+        'partner',
+        'investors',
         'partner-invest',
         'contact',
       ];
       if (validPages.includes(hash)) {
-        setCurrentPage(hash);
+        setCurrentPage(hash === 'partner-invest' ? 'partner' : hash);
       }
     };
 
@@ -39,13 +44,14 @@ export function App() {
   }, []);
 
   const handleNavigate = (page: ActivePage) => {
-    setCurrentPage(page);
-    window.location.hash = page === 'home' ? '' : page;
+    const targetPage = page === 'partner-invest' ? 'partner' : page;
+    setCurrentPage(targetPage);
+    window.location.hash = targetPage === 'home' ? '' : targetPage;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#000000', color: '#FFFFFF' }}>
       {/* Top Navbar */}
       <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
 
@@ -57,7 +63,9 @@ export function App() {
         {currentPage === 'nexstudios-africa' && <StudiosPage onNavigate={handleNavigate} />}
         {currentPage === 'nexafricuisine' && <CuisinePage onNavigate={handleNavigate} />}
         {currentPage === 'nexevents-africa' && <EventsPage onNavigate={handleNavigate} />}
-        {currentPage === 'partner-invest' && <PartnerInvestPage onNavigate={handleNavigate} />}
+        {currentPage === 'magazine' && <MagazinePage onNavigate={handleNavigate} />}
+        {(currentPage === 'partner' || currentPage === 'partner-invest') && <PartnerPage onNavigate={handleNavigate} />}
+        {currentPage === 'investors' && <InvestorsPage onNavigate={handleNavigate} />}
         {currentPage === 'contact' && <ContactPage onNavigate={handleNavigate} />}
       </div>
 

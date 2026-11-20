@@ -201,12 +201,17 @@ def seed_database():
                 currency="KES",
                 is_for_sale=False,
                 is_featured=True,
-                image_url="https://images.unsplash.com/photo-1582561173612-421718cb17ec?auto=format&fit=crop&w=1200&q=80",
+                image_url="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1200&q=80",
                 description="Synthesizing sacred geometric patterns found in ancient weaving with modern computational diagrams.",
                 exhibition_title="Voices from the Red Soil",
             ),
         ]
         db.session.bulk_save_objects(artworks)
+    else:
+        # Ensure existing database rows have working image URLs
+        broken_art = Artwork.query.filter_by(title="Ancestral Algorithm").first()
+        if broken_art and "1582561173612" in (broken_art.image_url or ""):
+            broken_art.image_url = "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1200&q=80"
 
     # 4. NexStudios Africa Portfolio & Projects
     studios_niche = niche_map.get("nexstudios-africa")
@@ -369,7 +374,7 @@ def seed_database():
                 ),
                 price=1100.0,
                 currency="KES",
-                image_url="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=1200&q=80",
+                image_url="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=1200&q=80",
                 dietary_tags=["Vegetarian", "Gluten-Free"],
                 is_available=True,
                 is_signature=False,
@@ -396,6 +401,10 @@ def seed_database():
             ),
         ]
         db.session.bulk_save_objects(menu_items)
+    else:
+        broken_menu = MenuItem.query.filter_by(title="Cassava Croquettes with Baobab Chili Dip").first()
+        if broken_menu and "1541832676" in (broken_menu.image_url or ""):
+            broken_menu.image_url = "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=1200&q=80"
 
     # 7. Events (Upcoming & Past Recaps)
     if Event.query.count() == 0:

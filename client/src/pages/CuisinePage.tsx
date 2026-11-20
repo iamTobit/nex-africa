@@ -4,7 +4,8 @@ import { api } from '../services/api';
 import { NexLogo } from '../components/NexLogo';
 import { InstagramFeed } from '../components/InstagramFeed';
 import { CateringInquiryModal } from '../components/Modals/CateringInquiryModal';
-import { ArrowLeft, Utensils, Sparkles, ChefHat, Leaf, Flame, ArrowRight } from 'lucide-react';
+import { resolveImageUrl, handleImageError } from '../utils/images';
+import { ArrowLeft, Utensils, ChefHat, ArrowRight } from 'lucide-react';
 
 interface CuisinePageProps {
   onNavigate: (page: ActivePage) => void;
@@ -28,12 +29,12 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
   }, [selectedCategory]);
 
   return (
-    <main style={{ backgroundColor: '#F5F3EF' }}>
+    <main style={{ backgroundColor: '#000000', color: '#FFFFFF' }}>
       {/* 1. BRAND HEADER & HERO */}
       <section
         style={{
-          backgroundColor: '#FFFFFF',
-          borderBottom: '1px solid rgba(47, 107, 58, 0.25)',
+          backgroundColor: '#000000',
+          borderBottom: '1px solid rgba(47, 107, 58, 0.35)',
           paddingTop: '3.5rem',
           paddingBottom: '4.5rem',
         }}
@@ -45,7 +46,7 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.45rem',
-              color: '#5A5751',
+              color: '#BFBFBF',
               fontSize: '0.84rem',
               fontWeight: 600,
               marginBottom: '1.75rem',
@@ -58,11 +59,11 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem' }}>
             <div style={{ maxWidth: '820px' }}>
               <div style={{ marginBottom: '1.25rem' }}>
-                <NexLogo variant="cuisine" size="lg" />
+                <NexLogo variant="cuisine" size="lg" animated />
               </div>
 
-              <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '1.25rem' }}>
-                <span className="badge badge-green">Entity Color: #2F6B3A</span>
+              <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+                <span className="badge badge-green">Subsidiary Accent: #2F6B3A</span>
                 <span className="badge">Symbolism: The Land, Growth & Nourishment</span>
               </div>
 
@@ -72,12 +73,13 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
                   fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
                   lineHeight: 1.2,
                   marginBottom: '1.25rem',
+                  color: '#FFFFFF',
                 }}
               >
                 "Treating food as identity, not just consumption."
               </h1>
 
-              <p style={{ fontSize: '1.15rem', color: '#5A5751', lineHeight: 1.65, maxWidth: '780px' }}>
+              <p style={{ fontSize: '1.15rem', color: '#BFBFBF', lineHeight: 1.65, maxWidth: '780px' }}>
                 NexAfriCuisine celebrates African culinary heritage — from home-cooked traditions to modern
                 reinterpretations — through content, catering, and cultural storytelling rooted in continental soils.
               </p>
@@ -86,21 +88,21 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
             {/* Catering CTA Card */}
             <div
               style={{
-                backgroundColor: '#FAF8F5',
-                border: '1.5px solid rgba(47, 107, 58, 0.3)',
+                backgroundColor: '#0B0B0B',
+                border: '1.5px solid rgba(47, 107, 58, 0.4)',
                 borderRadius: '12px',
                 padding: '1.85rem',
                 maxWidth: '340px',
                 width: '100%',
               }}
             >
-              <div className="label-smallcaps" style={{ color: '#2F6B3A', marginBottom: '0.6rem' }}>
+              <div className="label-smallcaps" style={{ color: '#55B367', marginBottom: '0.6rem' }}>
                 Private Dining & Events
               </div>
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif" }}>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                 Book Our Catering
               </h4>
-              <p style={{ fontSize: '0.88rem', color: '#5A5751', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '0.88rem', color: '#BFBFBF', lineHeight: 1.5, marginBottom: '1.25rem' }}>
                 Bring our multi-sensory African culinary journey to private gatherings, tasting dinners, and corporate summits.
               </p>
               <button
@@ -131,13 +133,13 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
             }}
           >
             <div>
-              <span className="label-smallcaps" style={{ color: '#2F6B3A', marginBottom: '0.35rem', display: 'flex' }}>
+              <span className="label-smallcaps" style={{ color: '#55B367', marginBottom: '0.35rem', display: 'flex' }}>
                 <Utensils size={13} />
                 <span>Gastronomic Lineage</span>
               </span>
-              <h2>Menu & Product Highlights</h2>
-              <p style={{ fontSize: '0.88rem', color: '#8A867E', marginTop: '0.2rem' }}>
-                Structured for future online ordering and seasonal dining subscriptions.
+              <h2 style={{ color: '#FFFFFF' }}>Menu & Product Highlights</h2>
+              <p style={{ fontSize: '0.88rem', color: '#808080', marginTop: '0.2rem' }}>
+                Structured for bespoke catering and seasonal dining experiences.
               </p>
             </div>
 
@@ -152,10 +154,10 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
                     borderRadius: '9999px',
                     fontSize: '0.84rem',
                     fontWeight: 600,
-                    backgroundColor: selectedCategory === cat ? '#2F6B3A' : '#FFFFFF',
-                    color: selectedCategory === cat ? '#FFFFFF' : '#5A5751',
+                    backgroundColor: selectedCategory === cat ? '#FFFFFF' : '#0B0B0B',
+                    color: selectedCategory === cat ? '#000000' : '#BFBFBF',
                     border: '1px solid',
-                    borderColor: selectedCategory === cat ? '#2F6B3A' : 'rgba(17,17,17,0.1)',
+                    borderColor: selectedCategory === cat ? '#FFFFFF' : 'rgba(255,255,255,0.18)',
                     transition: 'all 150ms ease',
                   }}
                 >
@@ -176,7 +178,6 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  backgroundColor: '#FFFFFF',
                 }}
               >
                 <div>
@@ -186,13 +187,14 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
                         borderRadius: '8px',
                         overflow: 'hidden',
                         height: '240px',
-                        backgroundColor: '#EDEAE4',
+                        backgroundColor: '#121212',
                         marginBottom: '1.25rem',
                       }}
                     >
                       <img
-                        src={item.image_url}
+                        src={resolveImageUrl(item.image_url, item.title)}
                         alt={item.title}
+                        onError={(e) => handleImageError(e)}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       />
                     </div>
@@ -200,24 +202,24 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
 
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
                     <div>
-                      <span className="label-smallcaps" style={{ color: '#2F6B3A', fontSize: '0.72rem' }}>
+                      <span className="label-smallcaps" style={{ color: '#55B367', fontSize: '0.72rem' }}>
                         {item.category}
                       </span>
-                      <h3 style={{ fontSize: '1.45rem', marginTop: '0.25rem' }}>{item.title}</h3>
+                      <h3 style={{ fontSize: '1.45rem', marginTop: '0.25rem', color: '#FFFFFF' }}>{item.title}</h3>
                     </div>
 
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, fontFamily: "'Playfair Display', serif", color: '#111111' }}>
+                    <div style={{ fontSize: '1.25rem', fontWeight: 800, fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                       {item.currency} {item.price.toLocaleString()}
                     </div>
                   </div>
 
                   {item.heritage_origin && (
-                    <div style={{ fontSize: '0.86rem', color: '#8c6a15', marginBottom: '0.75rem', fontWeight: 500 }}>
+                    <div style={{ fontSize: '0.86rem', color: '#D8B14A', marginBottom: '0.75rem', fontWeight: 500 }}>
                       Heritage Origin: <em>{item.heritage_origin}</em>
                     </div>
                   )}
 
-                  <p style={{ fontSize: '0.94rem', color: '#5A5751', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                  <p style={{ fontSize: '0.94rem', color: '#BFBFBF', lineHeight: 1.6, marginBottom: '1.25rem' }}>
                     {item.description}
                   </p>
 
@@ -226,12 +228,8 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
                     {item.dietary_tags.map((tag) => (
                       <span
                         key={tag}
-                        className="badge"
-                        style={{
-                          fontSize: '0.72rem',
-                          backgroundColor: tag.includes('Signature') ? 'rgba(47,107,58,0.12)' : 'rgba(17,17,17,0.04)',
-                          color: tag.includes('Signature') ? '#2F6B3A' : '#5A5751',
-                        }}
+                        className={tag.includes('Signature') ? 'badge badge-green' : 'badge'}
+                        style={{ fontSize: '0.72rem' }}
                       >
                         {tag}
                       </span>
@@ -243,13 +241,13 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
                   style={{
                     marginTop: '1.5rem',
                     paddingTop: '1rem',
-                    borderTop: '1px solid rgba(17,17,17,0.06)',
+                    borderTop: '1px solid rgba(255,255,255,0.1)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                   }}
                 >
-                  <span style={{ fontSize: '0.8rem', color: '#8A867E' }}>
+                  <span style={{ fontSize: '0.8rem', color: '#808080' }}>
                     SKU: <code>{item.sku || 'CUISINE-PROD'}</code>
                   </span>
                   <button
@@ -268,13 +266,13 @@ export const CuisinePage: React.FC<CuisinePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 3. SECRET SUPPER CLUBS CALLOUT */}
-      <section className="section-padding-sm" style={{ backgroundColor: '#FAF8F5', borderTop: '1px solid rgba(47, 107, 58, 0.2)' }}>
+      <section className="section-padding-sm" style={{ backgroundColor: '#070707', borderTop: '1px solid rgba(47, 107, 58, 0.3)' }}>
         <div className="container" style={{ maxWidth: '860px', textAlign: 'center' }}>
-          <span className="label-smallcaps" style={{ color: '#2F6B3A', marginBottom: '0.75rem' }}>
+          <span className="label-smallcaps" style={{ color: '#55B367', marginBottom: '0.75rem' }}>
             Nairobi Secret Supper Clubs
           </span>
-          <h2 style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>Multi-Course Heritage Gastronomy</h2>
-          <p style={{ color: '#5A5751', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+          <h2 style={{ fontSize: '2.2rem', marginBottom: '1rem', color: '#FFFFFF' }}>Multi-Course Heritage Gastronomy</h2>
+          <p style={{ color: '#BFBFBF', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '2rem' }}>
             Monthly communal banquets pairing ancient fermentation techniques, indigenous spices, and contemporary
             African jazz. Limited to 30 seats per seating.
           </p>

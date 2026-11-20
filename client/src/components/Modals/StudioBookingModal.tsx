@@ -53,7 +53,7 @@ export const StudioBookingModal: React.FC<Props> = ({ isOpen, onClose, selectedP
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#5A5751' }}
+          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#BFBFBF' }}
           aria-label="Close modal"
         >
           <X size={20} />
@@ -62,10 +62,10 @@ export const StudioBookingModal: React.FC<Props> = ({ isOpen, onClose, selectedP
         {success ? (
           <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
             <CheckCircle size={52} color="#A6192E" style={{ margin: '0 auto 1.25rem' }} />
-            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif" }}>
+            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
               Production Request Received
             </h3>
-            <p style={{ color: '#5A5751', marginBottom: '2rem' }}>
+            <p style={{ color: '#BFBFBF', marginBottom: '2rem' }}>
               Thank you! Our creative producer will review your project brief and connect with you within 24 hours with a
               tailored call sheet and shoot timeline.
             </p>
@@ -80,8 +80,8 @@ export const StudioBookingModal: React.FC<Props> = ({ isOpen, onClose, selectedP
                 <Video size={13} />
                 <span>NexStudios Africa Production Desk</span>
               </span>
-              <h3 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif" }}>Book a Production</h3>
-              <p style={{ fontSize: '0.92rem', color: '#5A5751', marginTop: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>Book a Production</h3>
+              <p style={{ fontSize: '0.92rem', color: '#BFBFBF', marginTop: '0.35rem' }}>
                 Tell us about your visual storytelling needs — brand campaigns, documentary films, or portraiture sessions.
               </p>
             </div>

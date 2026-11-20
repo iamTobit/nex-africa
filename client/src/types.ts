@@ -135,6 +135,23 @@ export interface InstagramPost {
   permalink: string;
 }
 
+export interface MagazineIssue {
+  id: number;
+  issue_number: string;
+  title: string;
+  subtitle: string;
+  release_date: string;
+  cover_image: string;
+  theme_tag: string;
+  featured_stories: {
+    title: string;
+    author: string;
+    category: string;
+    excerpt: string;
+    read_time: string;
+  }[];
+}
+
 export type ActivePage = 
   | 'home' 
   | 'about' 
@@ -142,5 +159,8 @@ export type ActivePage =
   | 'nexstudios-africa' 
   | 'nexafricuisine' 
   | 'nexevents-africa' 
+  | 'magazine'
+  | 'partner' 
+  | 'investors'
   | 'partner-invest' 
   | 'contact';

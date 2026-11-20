@@ -47,7 +47,7 @@ export const RsvpModal: React.FC<Props> = ({ isOpen, onClose, event }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#5A5751' }}
+          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#BFBFBF' }}
           aria-label="Close modal"
         >
           <X size={20} />
@@ -55,12 +55,12 @@ export const RsvpModal: React.FC<Props> = ({ isOpen, onClose, event }) => {
 
         {success ? (
           <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <CheckCircle size={52} color="#111111" style={{ margin: '0 auto 1.25rem' }} />
-            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif" }}>
+            <CheckCircle size={52} color="#FFFFFF" style={{ margin: '0 auto 1.25rem' }} />
+            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
               RSVP Confirmed
             </h3>
-            <p style={{ color: '#5A5751', marginBottom: '1.5rem' }}>
-              You are confirmed for <strong>{event.title}</strong>. A confirmation pass with event check-in instructions has
+            <p style={{ color: '#BFBFBF', marginBottom: '1.5rem' }}>
+              You are confirmed for <strong style={{ color: '#FFFFFF' }}>{event.title}</strong>. A confirmation pass with event check-in instructions has
               been dispatched to your email.
             </p>
             <button className="btn btn-primary" onClick={onClose} style={{ width: '100%' }}>
@@ -70,12 +70,12 @@ export const RsvpModal: React.FC<Props> = ({ isOpen, onClose, event }) => {
         ) : (
           <div>
             <div style={{ marginBottom: '1.75rem' }}>
-              <span className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.4rem', display: 'flex' }}>
+              <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.4rem', display: 'flex' }}>
                 <Calendar size={13} />
                 <span>Nairobi Cultural Calendar</span>
               </span>
-              <h3 style={{ fontSize: '1.7rem', fontFamily: "'Playfair Display', serif" }}>{event.title}</h3>
-              <p style={{ fontSize: '0.88rem', color: '#5A5751', marginTop: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.7rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>{event.title}</h3>
+              <p style={{ fontSize: '0.88rem', color: '#BFBFBF', marginTop: '0.35rem' }}>
                 {event.location} · {new Date(event.event_date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
               </p>
             </div>

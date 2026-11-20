@@ -4,6 +4,7 @@ import { api } from '../services/api';
 import { NexLogo } from '../components/NexLogo';
 import { InstagramFeed } from '../components/InstagramFeed';
 import { StudioBookingModal } from '../components/Modals/StudioBookingModal';
+import { resolveImageUrl, handleImageError } from '../utils/images';
 import { ArrowLeft, Play, Video, CheckCircle2, Clock, Calendar, ArrowRight } from 'lucide-react';
 
 interface StudiosPageProps {
@@ -41,12 +42,12 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <main style={{ backgroundColor: '#F5F3EF' }}>
+    <main style={{ backgroundColor: '#000000', color: '#FFFFFF' }}>
       {/* 1. BRAND HEADER & HERO */}
       <section
         style={{
-          backgroundColor: '#FFFFFF',
-          borderBottom: '1px solid rgba(166, 25, 46, 0.2)',
+          backgroundColor: '#000000',
+          borderBottom: '1px solid rgba(166, 25, 46, 0.35)',
           paddingTop: '3.5rem',
           paddingBottom: '4.5rem',
         }}
@@ -58,7 +59,7 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.45rem',
-              color: '#5A5751',
+              color: '#BFBFBF',
               fontSize: '0.84rem',
               fontWeight: 600,
               marginBottom: '1.75rem',
@@ -71,11 +72,11 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem' }}>
             <div style={{ maxWidth: '820px' }}>
               <div style={{ marginBottom: '1.25rem' }}>
-                <NexLogo variant="studios" size="lg" />
+                <NexLogo variant="studios" size="lg" animated />
               </div>
 
-              <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '1.25rem' }}>
-                <span className="badge badge-red">Entity Color: #A6192E</span>
+              <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+                <span className="badge badge-red">Subsidiary Accent: #A6192E</span>
                 <span className="badge">Symbolism: Energy, Passion & Motion</span>
               </div>
 
@@ -85,12 +86,13 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                   fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
                   lineHeight: 1.2,
                   marginBottom: '1.25rem',
+                  color: '#FFFFFF',
                 }}
               >
                 "Telling the African story visually, one shoot at a time."
               </h1>
 
-              <p style={{ fontSize: '1.15rem', color: '#5A5751', lineHeight: 1.65, maxWidth: '780px' }}>
+              <p style={{ fontSize: '1.15rem', color: '#BFBFBF', lineHeight: 1.65, maxWidth: '780px' }}>
                 NexStudios Africa is a Nairobi-based photo and video production house creating brand content, event
                 coverage, and personal portraiture — built to help African businesses and individuals command their narrative.
               </p>
@@ -99,8 +101,8 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
             {/* Quick Action Card */}
             <div
               style={{
-                backgroundColor: '#FAF8F5',
-                border: '1.5px solid rgba(166, 25, 46, 0.25)',
+                backgroundColor: '#0B0B0B',
+                border: '1.5px solid rgba(166, 25, 46, 0.4)',
                 borderRadius: '12px',
                 padding: '1.85rem',
                 maxWidth: '340px',
@@ -110,10 +112,10 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
               <div className="label-smallcaps" style={{ color: '#A6192E', marginBottom: '0.6rem' }}>
                 Commercial Production
               </div>
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif" }}>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                 Book Your Shoot
               </h4>
-              <p style={{ fontSize: '0.88rem', color: '#5A5751', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '0.88rem', color: '#BFBFBF', lineHeight: 1.5, marginBottom: '1.25rem' }}>
                 Reserve our camera operators, directors, and studio suites for upcoming campaigns or executive sessions.
               </p>
               <button
@@ -151,7 +153,7 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                 <Video size={13} />
                 <span>Motion & Frames</span>
               </span>
-              <h2>Portfolio & Showreels</h2>
+              <h2 style={{ color: '#FFFFFF' }}>Portfolio & Showreels</h2>
             </div>
 
             {/* Category Filter */}
@@ -165,10 +167,10 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                     borderRadius: '9999px',
                     fontSize: '0.84rem',
                     fontWeight: 600,
-                    backgroundColor: selectedCategory === cat ? '#A6192E' : '#FFFFFF',
-                    color: selectedCategory === cat ? '#FFFFFF' : '#5A5751',
+                    backgroundColor: selectedCategory === cat ? '#FFFFFF' : '#0B0B0B',
+                    color: selectedCategory === cat ? '#000000' : '#BFBFBF',
                     border: '1px solid',
-                    borderColor: selectedCategory === cat ? '#A6192E' : 'rgba(17,17,17,0.1)',
+                    borderColor: selectedCategory === cat ? '#FFFFFF' : 'rgba(255,255,255,0.18)',
                     transition: 'all 150ms ease',
                   }}
                 >
@@ -198,15 +200,16 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                       overflow: 'hidden',
                       height: '240px',
                       position: 'relative',
-                      backgroundColor: '#111111',
+                      backgroundColor: '#121212',
                       marginBottom: '1rem',
                       cursor: 'pointer',
                     }}
                     onClick={() => setActiveVideoUrl(proj.media_url)}
                   >
                     <img
-                      src={proj.thumbnail_url || 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80'}
+                      src={resolveImageUrl(proj.thumbnail_url, proj.title)}
                       alt={proj.title}
+                      onError={(e) => handleImageError(e)}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88 }}
                     />
                     <div
@@ -216,7 +219,7 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: 'rgba(17, 17, 17, 0.25)',
+                        backgroundColor: 'rgba(0, 0, 0, 0.35)',
                       }}
                     >
                       <div
@@ -242,7 +245,7 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                           position: 'absolute',
                           bottom: '10px',
                           right: '10px',
-                          backgroundColor: 'rgba(17,17,17,0.85)',
+                          backgroundColor: 'rgba(0,0,0,0.85)',
                           color: '#FFFFFF',
                           padding: '0.2rem 0.5rem',
                           borderRadius: '4px',
@@ -258,10 +261,10 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                   <span className="label-smallcaps" style={{ color: '#A6192E', fontSize: '0.72rem' }}>
                     {proj.category} {proj.client && `· ${proj.client}`}
                   </span>
-                  <h4 style={{ fontSize: '1.25rem', marginTop: '0.3rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif" }}>
+                  <h4 style={{ fontSize: '1.25rem', marginTop: '0.3rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                     {proj.title}
                   </h4>
-                  <p style={{ fontSize: '0.88rem', color: '#5A5751', lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.88rem', color: '#BFBFBF', lineHeight: 1.5 }}>
                     {proj.description}
                   </p>
                 </div>
@@ -272,15 +275,15 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 3. STANDALONE RATE CARD PRICING SECTION */}
-      <section className="section-padding" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+      <section className="section-padding" style={{ backgroundColor: '#050505', borderTop: '1px solid rgba(255,255,255,0.12)' }}>
         <div className="container">
           <div style={{ maxWidth: '720px', marginBottom: '3.5rem' }}>
             <span className="label-smallcaps" style={{ color: '#A6192E', marginBottom: '0.4rem', display: 'flex' }}>
               <Clock size={13} />
               <span>Production Packages</span>
             </span>
-            <h2>NexStudios Africa Rate Card</h2>
-            <p style={{ marginTop: '0.65rem' }}>
+            <h2 style={{ color: '#FFFFFF' }}>NexStudios Africa Rate Card</h2>
+            <p style={{ marginTop: '0.65rem', color: '#BFBFBF' }}>
               Transparent pricing, world-class 4K/6K cinema equipment, dedicated colorists, and rapid delivery timelines.
             </p>
           </div>
@@ -295,9 +298,8 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  border: pkg.is_popular ? '2px solid #A6192E' : '1px solid rgba(17,17,17,0.1)',
+                  border: pkg.is_popular ? '2px solid #A6192E' : '1px solid rgba(255,255,255,0.14)',
                   position: 'relative',
-                  backgroundColor: '#FFFFFF',
                 }}
               >
                 {pkg.is_popular && (
@@ -321,31 +323,31 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate }) => {
                 )}
 
                 <div>
-                  <span className="label-smallcaps" style={{ color: '#8A867E' }}>{pkg.category}</span>
-                  <h3 style={{ fontSize: '1.45rem', marginTop: '0.4rem', marginBottom: '0.65rem' }}>{pkg.name}</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#5A5751', lineHeight: 1.5, marginBottom: '1.5rem' }}>
+                  <span className="label-smallcaps" style={{ color: '#808080' }}>{pkg.category}</span>
+                  <h3 style={{ fontSize: '1.45rem', marginTop: '0.4rem', marginBottom: '0.65rem', color: '#FFFFFF' }}>{pkg.name}</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#BFBFBF', lineHeight: 1.5, marginBottom: '1.5rem' }}>
                     {pkg.tagline}
                   </p>
 
-                  <div style={{ marginBottom: '1.5rem', paddingBottom: '1.25rem', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
-                    <div className="label-smallcaps" style={{ color: '#8A867E', fontSize: '0.68rem' }}>Starting From</div>
-                    <div style={{ fontSize: '2rem', fontWeight: 800, fontFamily: "'Playfair Display', serif", color: '#111111' }}>
+                  <div style={{ marginBottom: '1.5rem', paddingBottom: '1.25rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="label-smallcaps" style={{ color: '#808080', fontSize: '0.68rem' }}>Starting From</div>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                       {pkg.currency} {pkg.starting_price.toLocaleString()}
                     </div>
                     {pkg.turnaround_time && (
-                      <div style={{ fontSize: '0.8rem', color: '#5A5751', marginTop: '0.2rem' }}>
-                        Turnaround: <strong>{pkg.turnaround_time}</strong>
+                      <div style={{ fontSize: '0.8rem', color: '#BFBFBF', marginTop: '0.2rem' }}>
+                        Turnaround: <strong style={{ color: '#FFFFFF' }}>{pkg.turnaround_time}</strong>
                       </div>
                     )}
                   </div>
 
                   <div style={{ marginBottom: '2rem' }}>
-                    <div className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.75rem', fontSize: '0.72rem' }}>
+                    <div className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.75rem', fontSize: '0.72rem' }}>
                       Deliverables Included:
                     </div>
                     <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                       {pkg.deliverables.map((deliv, idx) => (
-                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: '#5A5751' }}>
+                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: '#BFBFBF' }}>
                           <CheckCircle2 size={16} color="#A6192E" style={{ flexShrink: 0, marginTop: '2px' }} />
                           <span>{deliv}</span>
                         </li>

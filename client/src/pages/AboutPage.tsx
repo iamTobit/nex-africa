@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivePage, EcosystemVision } from '../types';
 import { api } from '../services/api';
-import { Sparkles, Compass, CheckCircle2, Award, Users, Globe, Building2 } from 'lucide-react';
+import { Sparkles, Compass, Award } from 'lucide-react';
 
 interface AboutPageProps {
   onNavigate: (page: ActivePage) => void;
@@ -33,22 +33,22 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
     { title: 'Uncompromising Quality', desc: 'World-class execution rooted in African authenticity and craftsmanship.' },
     { title: 'Creator Equity', desc: 'Ensuring our artists, filmmakers, and culinary artisans own their intellectual value.' },
     { title: 'Cultural Depth', desc: 'Respecting historical lineages while fearlessly pushing modern frontiers.' },
-    { title: 'Ecosystem Synergies', desc: 'Cross-pollinating food, visual art, cinema, and live gatherings into one seamless collective.' },
+    { title: 'Ecosystem Synergies', desc: 'Cross-pollinating food, visual art, cinema, editorial, and live gatherings into one seamless collective.' },
   ];
 
   return (
-    <main style={{ backgroundColor: '#F5F3EF' }}>
+    <main style={{ backgroundColor: '#000000', color: '#FFFFFF' }}>
       {/* 1. Header / Founding Story Hero */}
-      <section className="section-padding" style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
+      <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
         <div className="container" style={{ maxWidth: '960px' }}>
-          <span className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.65rem', display: 'flex' }}>
+          <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.65rem', display: 'flex' }}>
             <Compass size={14} />
             <span>Our Origin & Purpose</span>
           </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', marginBottom: '1.75rem', lineHeight: 1.15 }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', marginBottom: '1.75rem', lineHeight: 1.15, color: '#FFFFFF' }}>
             Africa's creativity deserves more than admiration — it deserves infrastructure.
           </h1>
-          <p style={{ fontSize: '1.25rem', color: '#5A5751', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+          <p style={{ fontSize: '1.25rem', color: '#BFBFBF', lineHeight: 1.7, marginBottom: '2.5rem' }}>
             Nexafrica Group was founded in Nairobi on a singular conviction: that African storytellers, visual artists,
             and culinary custodians have sustained global culture for centuries, but have rarely owned the commercial
             and physical platforms through which their work is experienced.
@@ -57,11 +57,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <div
             style={{
               padding: '2.5rem',
-              backgroundColor: '#FFFFFF',
+              backgroundColor: '#0B0B0B',
               borderRadius: '12px',
-              border: '1px solid rgba(17,17,17,0.08)',
-              borderLeft: '5px solid #111111',
-              boxShadow: 'var(--shadow-sm)',
+              border: '1px solid rgba(255,255,255,0.14)',
+              borderLeft: '4px solid #FFFFFF',
             }}
           >
             <blockquote
@@ -69,7 +68,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 fontFamily: "'Playfair Display', Georgia, serif",
                 fontSize: '1.35rem',
                 lineHeight: 1.5,
-                color: '#111111',
+                color: '#FFFFFF',
                 fontStyle: 'italic',
                 marginBottom: '1.25rem',
               }}
@@ -84,8 +83,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  backgroundColor: '#111111',
-                  color: '#F5F3EF',
+                  backgroundColor: '#FFFFFF',
+                  color: '#000000',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -97,8 +96,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 FK
               </div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '0.96rem' }}>Francis Kimathi</div>
-                <div className="label-smallcaps" style={{ color: '#8A867E', fontSize: '0.68rem' }}>
+                <div style={{ fontWeight: 700, fontSize: '0.96rem', color: '#FFFFFF' }}>Francis Kimathi</div>
+                <div className="label-smallcaps" style={{ color: '#808080', fontSize: '0.68rem' }}>
                   Founder, Nexafrica Group
                 </div>
               </div>
@@ -108,17 +107,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 2. THE SIX VERBS */}
-      <section className="section-padding" style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
+      <section className="section-padding" style={{ backgroundColor: '#000000', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
         <div className="container">
           <div style={{ maxWidth: '720px', marginBottom: '3.5rem' }}>
-            <span className="label-smallcaps" style={{ color: '#B8912A', marginBottom: '0.5rem', display: 'flex' }}>
+            <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.5rem', display: 'flex' }}>
               <Sparkles size={14} />
               <span>The Six Verbs</span>
             </span>
-            <h2>Our Operational Doctrine</h2>
-            <p style={{ marginTop: '0.65rem' }}>
-              Everything we build across contemporary art, cinema, food, and gatherings is anchored in six foundational
-              verbs. They guide every exhibition, reel, tasting menu, and partnership.
+            <h2 style={{ color: '#FFFFFF' }}>Our Operational Doctrine</h2>
+            <p style={{ marginTop: '0.65rem', color: '#BFBFBF' }}>
+              Everything we build across contemporary art, cinema, food, magazine editorial, and gatherings is anchored
+              in six foundational verbs. They guide every exhibition, reel, tasting menu, and partnership.
             </p>
           </div>
 
@@ -132,7 +131,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  borderTop: '3px solid #111111',
+                  borderTop: '3px solid #FFFFFF',
                 }}
               >
                 <div>
@@ -141,19 +140,19 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                       fontFamily: "'Playfair Display', serif",
                       fontSize: '1.8rem',
                       fontWeight: 700,
-                      color: '#111111',
+                      color: '#FFFFFF',
                       marginBottom: '0.75rem',
                       display: 'flex',
                       alignItems: 'baseline',
                       gap: '0.65rem',
                     }}
                   >
-                    <span style={{ fontSize: '0.95rem', color: '#8A867E', fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>
+                    <span style={{ fontSize: '0.95rem', color: '#808080', fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>
                       0{i + 1}
                     </span>
                     <span>{v.verb}</span>
                   </div>
-                  <p style={{ fontSize: '0.95rem', color: '#5A5751', lineHeight: 1.6 }}>{v.description}</p>
+                  <p style={{ fontSize: '0.95rem', color: '#BFBFBF', lineHeight: 1.6 }}>{v.description}</p>
                 </div>
               </div>
             ))}
@@ -162,15 +161,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 3. THE NEXAFRICA STANDARD (VALUES) */}
-      <section className="section-padding" style={{ backgroundColor: '#F5F3EF' }}>
+      <section className="section-padding" style={{ backgroundColor: '#000000' }}>
         <div className="container">
           <div style={{ maxWidth: '720px', marginBottom: '3.5rem' }}>
-            <span className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.5rem', display: 'flex' }}>
+            <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.5rem', display: 'flex' }}>
               <Award size={14} />
               <span>Core Values</span>
             </span>
-            <h2>The Nexafrica Standard</h2>
-            <p style={{ marginTop: '0.65rem' }}>
+            <h2 style={{ color: '#FFFFFF' }}>The Nexafrica Standard</h2>
+            <p style={{ marginTop: '0.65rem', color: '#BFBFBF' }}>
               The principles that govern our commercial standards, curatorial integrity, and community relationships.
             </p>
           </div>
@@ -183,8 +182,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     width: '36px',
                     height: '36px',
                     borderRadius: '8px',
-                    backgroundColor: idx === 0 ? '#B8912A' : idx === 1 ? '#A6192E' : idx === 2 ? '#2F6B3A' : '#111111',
-                    color: '#FFFFFF',
+                    backgroundColor: idx === 0 ? '#B8912A' : idx === 1 ? '#A6192E' : idx === 2 ? '#2F6B3A' : '#FFFFFF',
+                    color: idx === 3 ? '#000000' : '#FFFFFF',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -195,10 +194,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   ✓
                 </div>
                 <div>
-                  <h4 style={{ fontSize: '1.25rem', marginBottom: '0.45rem', fontFamily: "'Playfair Display', serif" }}>
+                  <h4 style={{ fontSize: '1.25rem', marginBottom: '0.45rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                     {val.title}
                   </h4>
-                  <p style={{ fontSize: '0.95rem', color: '#5A5751', lineHeight: 1.55 }}>{val.desc}</p>
+                  <p style={{ fontSize: '0.95rem', color: '#BFBFBF', lineHeight: 1.55 }}>{val.desc}</p>
                 </div>
               </div>
             ))}
@@ -206,7 +205,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
           {/* Bottom Action */}
           <div style={{ marginTop: '4rem', textAlign: 'center' }}>
-            <button onClick={() => onNavigate('partner-invest')} className="btn btn-primary" style={{ padding: '0.9rem 2rem' }}>
+            <button onClick={() => onNavigate('partner')} className="btn btn-primary" style={{ padding: '0.9rem 2rem' }}>
               <span>Explore Partnership Opportunities</span>
             </button>
           </div>

@@ -1,46 +1,50 @@
 /* ============================================================
    NEXAFRICA GROUP — DESIGN SYSTEM & TOKENS
-   Aesthetic: African Creative Vanguard, Bold Serifs, Warm Neutrals
+   Aesthetic: Pure Black & White Majority, Subsidiary Accent Minority
    ============================================================ */
 
 :root {
-  /* Brand Guidelines Colors */
-  --color-group: #111111;        /* Nexafrica Group: Black (The people, unity) */
+  /* Primary Brand Colors (Majority: Pure Black & Pure White) */
+  --color-group: #FFFFFF;        /* Primary Foreground on Black Canvas */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+
+  /* Subsidiary Brand Colors (Minority Accents) */
   --color-art: #B8912A;          /* NexArt Africa: Gold (Wealth/richness of heritage) */
   --color-studios: #A6192E;      /* NexStudios Africa: Red (Energy, passion, motion) */
   --color-cuisine: #2F6B3A;      /* NexAfriCuisine: Green (The land, growth, nourishment) */
-  --color-events: #111111;       /* NexEvents Africa: Black / Unified */
+  --color-events: #FFFFFF;       /* NexEvents Africa: White on Black */
   
-  /* Canvas & Neutral System */
-  --bg-body: #F5F3EF;            /* Warm off-white site-wide canvas */
-  --bg-card: #FFFFFF;            /* Pure white cards and surfaces */
-  --bg-surface: #EDEAE4;         /* Subtle secondary warm surface */
-  --bg-surface-elevated: #FAF8F5;
-  --bg-dark: #121212;            /* Deep black dark mode/dark cards */
-  --bg-dark-card: #1A1A1A;
+  /* Black Canvas & Surface System */
+  --bg-body: #000000;            /* Pure black site-wide canvas */
+  --bg-card: #0B0B0B;            /* Deep black cards and surfaces */
+  --bg-surface: #121212;         /* Subtle secondary dark surface */
+  --bg-surface-elevated: #171717;
+  --bg-dark: #000000;
+  --bg-dark-card: #0F0F0F;
   
-  /* Text & Typography */
-  --text-primary: #111111;
-  --text-secondary: #5A5751;
-  --text-muted: #8A867E;
-  --text-inverse: #F5F3EF;
-  --text-inverse-muted: #B3B0A8;
+  /* Text & Typography (White & Monochrome Hierarchy) */
+  --text-primary: #FFFFFF;
+  --text-secondary: #BFBFBF;
+  --text-muted: #808080;
+  --text-inverse: #000000;
+  --text-inverse-muted: #333333;
 
   /* Typography Families */
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   
   /* Elevation & Shadows */
-  --shadow-xs: 0 1px 2px rgba(17, 17, 17, 0.04);
-  --shadow-sm: 0 2px 8px rgba(17, 17, 17, 0.06);
-  --shadow-md: 0 6px 20px rgba(17, 17, 17, 0.08);
-  --shadow-lg: 0 16px 36px rgba(17, 17, 17, 0.12);
-  --shadow-xl: 0 24px 56px rgba(17, 17, 17, 0.16);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.65);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.75);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.85);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.92);
 
-  /* Borders & Dividers */
-  --border-subtle: rgba(17, 17, 17, 0.08);
-  --border-medium: rgba(17, 17, 17, 0.15);
-  --border-strong: rgba(17, 17, 17, 0.85);
+  /* Borders & Dividers (Crisp White Hairlines) */
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-medium: rgba(255, 255, 255, 0.24);
+  --border-strong: rgba(255, 255, 255, 0.85);
 
   /* Layout */
   --max-width: 1240px;
@@ -68,6 +72,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
 body {
@@ -110,6 +116,7 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  color: inherit;
 }
 
 img, video {
@@ -161,30 +168,30 @@ img, video {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  background-color: rgba(17, 17, 17, 0.05);
-  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #FFFFFF;
   border: 1px solid var(--border-subtle);
 }
 
 .badge-gold {
-  background-color: rgba(184, 145, 42, 0.12);
-  color: #8c6a15;
-  border-color: rgba(184, 145, 42, 0.25);
+  background-color: rgba(184, 145, 42, 0.15);
+  color: #D8B14A;
+  border-color: rgba(184, 145, 42, 0.35);
 }
 
 .badge-red {
-  background-color: rgba(166, 25, 46, 0.1);
-  color: #841223;
-  border-color: rgba(166, 25, 46, 0.25);
+  background-color: rgba(166, 25, 46, 0.18);
+  color: #E04B60;
+  border-color: rgba(166, 25, 46, 0.4);
 }
 
 .badge-green {
-  background-color: rgba(47, 107, 58, 0.12);
-  color: #1e4a27;
-  border-color: rgba(47, 107, 58, 0.25);
+  background-color: rgba(47, 107, 58, 0.18);
+  color: #55B367;
+  border-color: rgba(47, 107, 58, 0.4);
 }
 
-/* Button Variants */
+/* Button Variants — Primary: Crisp White on Black; Secondary: Black with White Border */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -200,25 +207,27 @@ img, video {
 }
 
 .btn-primary {
-  background-color: var(--color-group);
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1.5px solid #FFFFFF;
 }
 
 .btn-primary:hover {
-  background-color: #262626;
+  background-color: #E5E5E5;
+  border-color: #E5E5E5;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--text-primary);
+  color: #FFFFFF;
   border: 1.5px solid var(--border-medium);
 }
 
 .btn-secondary:hover {
-  border-color: var(--text-primary);
-  background-color: rgba(17, 17, 17, 0.03);
+  border-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.08);
   transform: translateY(-2px);
 }
 
@@ -267,7 +276,7 @@ img, video {
 .card-hover:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(17, 17, 17, 0.15);
+  border-color: rgba(255, 255, 255, 0.32);
 }
 
 /* Grid Layout Utilities */
@@ -310,7 +319,7 @@ img, video {
 .form-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #FFFFFF;
   letter-spacing: 0.02em;
 }
 
@@ -319,17 +328,21 @@ img, video {
   padding: 0.85rem 1.1rem;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--border-medium);
-  background-color: #FFFFFF;
-  color: var(--text-primary);
+  background-color: #0F0F0F;
+  color: #FFFFFF;
   font-family: var(--font-sans);
   font-size: 0.95rem;
   outline: none;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #666666;
+}
+
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--color-group);
-  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.1);
+  border-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
 }
 
 .form-textarea {
@@ -341,8 +354,8 @@ img, video {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(17, 17, 17, 0.65);
-  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -352,7 +365,9 @@ img, video {
 }
 
 .modal-content {
-  background-color: #FFFFFF;
+  background-color: #0E0E0E;
+  border: 1px solid var(--border-medium);
+  color: #FFFFFF;
   border-radius: var(--radius-md);
   max-width: 620px;
   width: 100%;
@@ -391,6 +406,7 @@ img, video {
   border-radius: var(--radius-sm);
   aspect-ratio: 1;
   background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
 }
 
 .instagram-card img {
@@ -407,7 +423,7 @@ img, video {
 .instagram-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(17, 17, 17, 0.88), rgba(17, 17, 17, 0.2) 60%, transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.25) 60%, transparent);
   opacity: 0;
   transition: opacity var(--transition-normal);
   display: flex;

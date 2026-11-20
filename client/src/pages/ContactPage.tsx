@@ -53,12 +53,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <main style={{ backgroundColor: '#F5F3EF' }}>
+    <main style={{ backgroundColor: '#000000', color: '#FFFFFF' }}>
       {/* 1. HEADER */}
       <section
         style={{
-          backgroundColor: '#FFFFFF',
-          borderBottom: '1px solid rgba(17, 17, 17, 0.08)',
+          backgroundColor: '#000000',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
           paddingTop: '3.5rem',
           paddingBottom: '4.5rem',
         }}
@@ -70,7 +70,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.45rem',
-              color: '#5A5751',
+              color: '#BFBFBF',
               fontSize: '0.84rem',
               fontWeight: 600,
               marginBottom: '1.75rem',
@@ -80,16 +80,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             <span>Back to Ecosystem Home</span>
           </button>
 
-          <span className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.65rem', display: 'flex' }}>
+          <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.65rem', display: 'flex' }}>
             <MessageSquare size={14} />
             <span>Direct Communications</span>
           </span>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem', lineHeight: 1.15 }}>
+          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem', lineHeight: 1.15, color: '#FFFFFF' }}>
             Contact the Ecosystem
           </h1>
-          <p style={{ fontSize: '1.2rem', color: '#5A5751', lineHeight: 1.65, maxWidth: '820px' }}>
+          <p style={{ fontSize: '1.2rem', color: '#BFBFBF', lineHeight: 1.65, maxWidth: '820px' }}>
             Have a question for our group leadership or a specific niche? Use our routed inquiry system to reach the exact
-            curator, producer, or team member.
+            curator, editor, producer, or team member.
           </p>
         </div>
       </section>
@@ -100,7 +100,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1.25fr 0.75fr',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
               gap: '3rem',
               alignItems: 'start',
             }}
@@ -108,25 +108,24 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             {/* Form */}
             <div
               style={{
-                backgroundColor: '#FFFFFF',
+                backgroundColor: '#0B0B0B',
                 borderRadius: '16px',
                 padding: 'clamp(2rem, 3.5vw, 3rem)',
-                border: '1px solid rgba(17,17,17,0.08)',
-                boxShadow: 'var(--shadow-sm)',
+                border: '1px solid rgba(255,255,255,0.14)',
               }}
             >
-              <h3 style={{ fontSize: '1.65rem', marginBottom: '0.5rem' }}>Send an Inquiry</h3>
-              <p style={{ fontSize: '0.9rem', color: '#5A5751', marginBottom: '2rem' }}>
+              <h3 style={{ fontSize: '1.65rem', marginBottom: '0.5rem', color: '#FFFFFF' }}>Send an Inquiry</h3>
+              <p style={{ fontSize: '0.9rem', color: '#BFBFBF', marginBottom: '2rem' }}>
                 Select your intended niche from the dropdown to route your message directly.
               </p>
 
               {successMessage ? (
                 <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-                  <CheckCircle2 size={52} color="#111111" style={{ margin: '0 auto 1.25rem' }} />
-                  <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif" }}>
+                  <CheckCircle2 size={52} color="#FFFFFF" style={{ margin: '0 auto 1.25rem' }} />
+                  <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                     Message Dispatched
                   </h3>
-                  <p style={{ color: '#5A5751', marginBottom: '2rem', lineHeight: 1.6 }}>{successMessage}</p>
+                  <p style={{ color: '#BFBFBF', marginBottom: '2rem', lineHeight: 1.6 }}>{successMessage}</p>
                   <button className="btn btn-primary" onClick={() => setSuccessMessage(null)}>
                     Send Another Message
                   </button>
@@ -137,8 +136,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     <div
                       style={{
                         padding: '0.85rem 1rem',
-                        backgroundColor: 'rgba(166,25,46,0.08)',
-                        color: '#A6192E',
+                        backgroundColor: 'rgba(166,25,46,0.18)',
+                        color: '#E04B60',
                         borderRadius: '4px',
                         marginBottom: '1.5rem',
                         fontSize: '0.9rem',
@@ -175,7 +174,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '1.25rem' }}>
-                    {/* DROPDOWN ROUTING PER NICHE (KEY REQUIREMENT FROM BRIEF) */}
                     <div className="form-group">
                       <label className="form-label">Route to Niche *</label>
                       <select
@@ -243,38 +241,38 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             {/* Nairobi Headquarters Info */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div className="card" style={{ padding: '2rem' }}>
-                <div className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.85rem' }}>
+                <div className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.85rem' }}>
                   Nairobi Headquarters
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', fontSize: '0.92rem' }}>
                   <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                    <MapPin size={18} color="#111111" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <MapPin size={18} color="#FFFFFF" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <div>
-                      <strong>NexHub Creative Pavilion</strong>
-                      <div style={{ color: '#5A5751', marginTop: '2px' }}>
+                      <strong style={{ color: '#FFFFFF' }}>NexHub Creative Pavilion</strong>
+                      <div style={{ color: '#BFBFBF', marginTop: '2px' }}>
                         Kilimani & Westlands Creative Lofts, Nairobi, Kenya
                       </div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                    <Mail size={18} color="#111111" style={{ flexShrink: 0 }} />
-                    <a href="mailto:hello@nexafrica.group" style={{ color: '#111111', fontWeight: 600 }}>
+                    <Mail size={18} color="#FFFFFF" style={{ flexShrink: 0 }} />
+                    <a href="mailto:hello@nexafrica.group" style={{ color: '#FFFFFF', fontWeight: 600 }}>
                       hello@nexafrica.group
                     </a>
                   </div>
 
                   <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                    <Phone size={18} color="#111111" style={{ flexShrink: 0 }} />
-                    <span style={{ color: '#5A5751' }}>+254 (0) 720 000 000</span>
+                    <Phone size={18} color="#FFFFFF" style={{ flexShrink: 0 }} />
+                    <span style={{ color: '#BFBFBF' }}>+254 (0) 720 000 000</span>
                   </div>
 
                   <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                    <Clock size={18} color="#111111" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <Clock size={18} color="#FFFFFF" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <div>
-                      <strong>Studio & Gallery Hours</strong>
-                      <div style={{ color: '#5A5751', marginTop: '2px' }}>
+                      <strong style={{ color: '#FFFFFF' }}>Studio & Gallery Hours</strong>
+                      <div style={{ color: '#BFBFBF', marginTop: '2px' }}>
                         Tuesday – Saturday: 10:00 AM – 7:00 PM EAT
                       </div>
                     </div>
@@ -283,30 +281,30 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Direct Social Handles */}
-              <div className="card" style={{ padding: '2rem', backgroundColor: '#FAF8F5' }}>
-                <div className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.85rem' }}>
+              <div className="card" style={{ padding: '2rem' }}>
+                <div className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.85rem' }}>
                   Official Handles
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.88rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.88rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: '#5A5751' }}>Nexafrica Group:</span>
-                    <strong>@nexafricagroup</strong>
+                    <span style={{ color: '#BFBFBF' }}>Nexafrica Group:</span>
+                    <strong style={{ color: '#FFFFFF' }}>@nexafricagroup</strong>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: '#5A5751' }}>NexArt Africa:</span>
+                    <span style={{ color: '#BFBFBF' }}>NexArt Africa:</span>
                     <strong style={{ color: '#B8912A' }}>@nexartafrica</strong>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: '#5A5751' }}>NexStudios Africa:</span>
+                    <span style={{ color: '#BFBFBF' }}>NexStudios Africa:</span>
                     <strong style={{ color: '#A6192E' }}>@nexstudiosafrica</strong>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: '#5A5751' }}>NexAfriCuisine:</span>
+                    <span style={{ color: '#BFBFBF' }}>NexAfriCuisine:</span>
                     <strong style={{ color: '#2F6B3A' }}>@nexafricuisine</strong>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: '#5A5751' }}>NexEvents Africa:</span>
-                    <strong>@nexeventsafrica</strong>
+                    <span style={{ color: '#BFBFBF' }}>NexEvents Africa:</span>
+                    <strong style={{ color: '#FFFFFF' }}>@nexeventsafrica</strong>
                   </div>
                 </div>
               </div>

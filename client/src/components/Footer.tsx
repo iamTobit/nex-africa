@@ -37,12 +37,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer style={{ backgroundColor: '#111111', color: '#F5F3EF', paddingTop: '5rem', paddingBottom: '3.5rem' }}>
+    <footer
+      style={{
+        backgroundColor: '#000000',
+        color: '#FFFFFF',
+        paddingTop: '5rem',
+        paddingBottom: '3.5rem',
+        borderTop: '1px solid rgba(255, 255, 255, 0.14)',
+      }}
+    >
       <div className="container">
         {/* Six Verbs Architectural Banner */}
         <div
           style={{
-            borderBottom: '1px solid rgba(245, 243, 239, 0.12)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
             paddingBottom: '2.5rem',
             marginBottom: '4rem',
             display: 'flex',
@@ -53,10 +61,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           }}
         >
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem 2rem', alignItems: 'center' }}>
-            <span className="label-smallcaps" style={{ color: '#B8912A', letterSpacing: '0.22em' }}>
+            <span className="label-smallcaps" style={{ color: '#FFFFFF', letterSpacing: '0.22em' }}>
               The Nexafrica Standard
             </span>
-            <span style={{ color: 'rgba(245,243,239,0.3)' }}>|</span>
+            <span style={{ color: 'rgba(255,255,255,0.25)' }}>|</span>
             {['Create', 'Document', 'Preserve', 'Connect', 'Communicate', 'Build'].map((verb, idx) => (
               <span
                 key={verb}
@@ -64,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   fontFamily: "'Playfair Display', serif",
                   fontSize: '1.05rem',
                   letterSpacing: '0.04em',
-                  color: idx % 2 === 0 ? '#F5F3EF' : 'rgba(245, 243, 239, 0.7)',
+                  color: idx % 2 === 0 ? '#FFFFFF' : 'rgba(255, 255, 255, 0.68)',
                 }}
               >
                 {verb} {idx < 5 && <span style={{ opacity: 0.35, marginLeft: '0.6rem' }}>·</span>}
@@ -73,9 +81,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <button
-            onClick={() => handleNav('partner-invest')}
+            onClick={() => handleNav('partner')}
             style={{
-              color: '#B8912A',
+              color: '#FFFFFF',
               fontSize: '0.86rem',
               fontWeight: 600,
               letterSpacing: '0.05em',
@@ -84,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               gap: '0.4rem',
             }}
           >
-            <span>Partner / Invest Portal</span>
+            <span>Partner Portal</span>
             <ArrowRight size={14} />
           </button>
         </div>
@@ -101,12 +109,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Col 1: Brand & Founder Statement */}
           <div>
             <div onClick={() => handleNav('home')} style={{ marginBottom: '1.5rem', cursor: 'pointer' }}>
-              <NexLogo variant="group" colorOverride="#F5F3EF" size="md" />
+              <NexLogo variant="group" colorOverride="#FFFFFF" size="md" />
             </div>
             <p
               style={{
                 fontSize: '0.9rem',
-                color: 'rgba(245, 243, 239, 0.72)',
+                color: 'rgba(255, 255, 255, 0.72)',
                 lineHeight: 1.6,
                 marginBottom: '1.5rem',
                 fontStyle: 'italic',
@@ -115,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               "Nexafrica Group exists because Africa's creativity deserves more than admiration — it deserves
               infrastructure."
             </p>
-            <div style={{ fontSize: '0.8rem', color: '#B8912A', fontWeight: 600, letterSpacing: '0.08em' }}>
+            <div style={{ fontSize: '0.8rem', color: '#FFFFFF', fontWeight: 700, letterSpacing: '0.08em' }}>
               FRANCIS KIMATHI — FOUNDER
             </div>
           </div>
@@ -129,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 fontWeight: 700,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: '#F5F3EF',
+                color: '#FFFFFF',
                 marginBottom: '1.5rem',
               }}
             >
@@ -140,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <button
                   onClick={() => handleNav('nexart-africa')}
                   style={{
-                    color: 'rgba(245,243,239,0.8)',
+                    color: 'rgba(255,255,255,0.82)',
                     fontSize: '0.92rem',
                     display: 'flex',
                     alignItems: 'center',
@@ -148,14 +156,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   }}
                 >
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#B8912A' }} />
-                  <span>NexArt Africa (Gold)</span>
+                  <span>NexArt Africa</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handleNav('nexstudios-africa')}
                   style={{
-                    color: 'rgba(245,243,239,0.8)',
+                    color: 'rgba(255,255,255,0.82)',
                     fontSize: '0.92rem',
                     display: 'flex',
                     alignItems: 'center',
@@ -163,14 +171,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   }}
                 >
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#A6192E' }} />
-                  <span>NexStudios Africa (Red)</span>
+                  <span>NexStudios Africa</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handleNav('nexafricuisine')}
                   style={{
-                    color: 'rgba(245,243,239,0.8)',
+                    color: 'rgba(255,255,255,0.82)',
                     fontSize: '0.92rem',
                     display: 'flex',
                     alignItems: 'center',
@@ -178,22 +186,37 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   }}
                 >
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#2F6B3A' }} />
-                  <span>NexAfriCuisine (Green)</span>
+                  <span>NexAfriCuisine</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handleNav('nexevents-africa')}
                   style={{
-                    color: 'rgba(245,243,239,0.6)',
+                    color: 'rgba(255,255,255,0.82)',
                     fontSize: '0.92rem',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.6rem',
                   }}
                 >
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#777' }} />
-                  <span>NexEvents Africa (Upcoming)</span>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#FFFFFF' }} />
+                  <span>NexEvents Africa</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav('magazine')}
+                  style={{
+                    color: 'rgba(255,255,255,0.82)',
+                    fontSize: '0.92rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.6rem',
+                  }}
+                >
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#FFFFFF' }} />
+                  <span>NexMagazine</span>
                 </button>
               </li>
             </ul>
@@ -208,7 +231,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 fontWeight: 700,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: '#F5F3EF',
+                color: '#FFFFFF',
                 marginBottom: '1.5rem',
               }}
             >
@@ -218,31 +241,39 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => handleNav('about')}
-                  style={{ color: 'rgba(245,243,239,0.8)', fontSize: '0.92rem' }}
+                  style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.92rem' }}
                 >
                   About & Vision
                 </button>
               </li>
               <li>
                 <button
+                  onClick={() => handleNav('magazine')}
+                  style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.92rem' }}
+                >
+                  NexMagazine Editorial
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => handleNav('nexevents-africa')}
-                  style={{ color: 'rgba(245,243,239,0.8)', fontSize: '0.92rem' }}
+                  style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.92rem' }}
                 >
                   Nairobi Cultural Calendar
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('partner-invest')}
-                  style={{ color: 'rgba(245,243,239,0.8)', fontSize: '0.92rem' }}
+                  onClick={() => handleNav('partner')}
+                  style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.92rem' }}
                 >
-                  Partner / Invest Portal
+                  Partner Portal
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handleNav('contact')}
-                  style={{ color: 'rgba(245,243,239,0.8)', fontSize: '0.92rem' }}
+                  style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.92rem' }}
                 >
                   Contact & Direct Inquiries
                 </button>
@@ -259,14 +290,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 fontWeight: 700,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: '#F5F3EF',
+                color: '#FFFFFF',
                 marginBottom: '1.25rem',
               }}
             >
               The Dispatches
             </h4>
-            <p style={{ fontSize: '0.88rem', color: 'rgba(245,243,239,0.7)', marginBottom: '1.2rem', lineHeight: 1.5 }}>
-              Receive invitations to private gallery previews, film screenings, and secret supper clubs.
+            <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.7)', marginBottom: '1.2rem', lineHeight: 1.5 }}>
+              Receive invitations to private gallery previews, magazine issues, film screenings, and secret supper clubs.
             </p>
 
             <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -277,12 +308,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(255,255,255,0.18)',
+                    backgroundColor: '#0E0E0E',
+                    border: '1px solid rgba(255,255,255,0.22)',
                     borderRight: 'none',
                     borderRadius: '4px 0 0 4px',
                     padding: '0.75rem 1rem',
-                    color: '#F5F3EF',
+                    color: '#FFFFFF',
                     fontSize: '0.88rem',
                     outline: 'none',
                     flex: 1,
@@ -293,13 +324,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   type="submit"
                   disabled={subscribing}
                   style={{
-                    backgroundColor: '#B8912A',
-                    color: '#FFFFFF',
+                    backgroundColor: '#FFFFFF',
+                    color: '#000000',
                     padding: '0 1.25rem',
                     borderRadius: '0 4px 4px 0',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    fontWeight: 700,
                   }}
                   id="footer-subscribe-btn"
                 >
@@ -308,7 +340,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
 
               {subscribedMessage && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#B8912A', fontSize: '0.82rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#FFFFFF', fontSize: '0.82rem' }}>
                   <CheckCircle2 size={14} />
                   <span>{subscribedMessage}</span>
                 </div>
@@ -316,14 +348,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </form>
 
             <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <span className="label-smallcaps" style={{ color: 'rgba(245,243,239,0.5)', fontSize: '0.68rem' }}>
+              <span className="label-smallcaps" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.68rem' }}>
                 Social Channels:
               </span>
               <a
                 href="https://instagram.com/nexafricagroup"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: '#F5F3EF', opacity: 0.8 }}
+                style={{ color: '#FFFFFF', opacity: 0.85 }}
                 title="@nexafricagroup"
               >
                 <InstagramIcon size={18} />
@@ -335,7 +367,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom Bar */}
         <div
           style={{
-            borderTop: '1px solid rgba(245, 243, 239, 0.08)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             paddingTop: '2rem',
             display: 'flex',
             flexWrap: 'wrap',
@@ -343,7 +375,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             alignItems: 'center',
             gap: '1rem',
             fontSize: '0.82rem',
-            color: 'rgba(245, 243, 239, 0.5)',
+            color: 'rgba(255, 255, 255, 0.5)',
           }}
         >
           <div>

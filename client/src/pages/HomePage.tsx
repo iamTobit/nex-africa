@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { ActivePage, EcosystemVision, Niche, EventItem } from '../types';
 import { api } from '../services/api';
 import { NexLogo } from '../components/NexLogo';
-import { ArrowRight, ArrowUpRight, Sparkles, Calendar, Layers, CheckCircle2 } from 'lucide-react';
+import { resolveImageUrl, handleImageError } from '../utils/images';
+import { ArrowRight, ArrowUpRight, Sparkles, Calendar, Layers, BookOpen } from 'lucide-react';
 
 interface HomePageProps {
   onNavigate: (page: ActivePage) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
-  const [ecosystem, setEcosystem] = useState<EcosystemVision | null>(null);
-  const [niches, setNiches] = useState<Niche[]>([]);
+  const [, setEcosystem] = useState<EcosystemVision | null>(null);
+  const [, setNiches] = useState<Niche[]>([]);
   const [recentEvents, setRecentEvents] = useState<EventItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -35,15 +36,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   }, []);
 
   return (
-    <main>
+    <main style={{ backgroundColor: '#000000', color: '#FFFFFF' }}>
       {/* 1. HERO SECTION */}
       <section
         style={{
           position: 'relative',
           paddingTop: '6rem',
           paddingBottom: '6.5rem',
-          backgroundColor: '#F5F3EF',
-          borderBottom: '1px solid rgba(17, 17, 17, 0.08)',
+          backgroundColor: '#000000',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
           overflow: 'hidden',
         }}
       >
@@ -53,27 +54,32 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             position: 'absolute',
             right: '-6%',
             top: '5%',
-            opacity: 0.04,
+            opacity: 0.05,
             pointerEvents: 'none',
             transform: 'scale(1.4)',
           }}
         >
-          <NexLogo variant="group" size="lg" showSubtitle={false} />
+          <NexLogo variant="group" colorOverride="#FFFFFF" size="lg" showSubtitle={false} />
         </div>
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          {/* Animated Brand Hero Mark */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <NexLogo variant="group" size="lg" animated />
+          </div>
+
           {/* Tagline / Small Caps Header */}
           <div style={{ marginBottom: '1.25rem' }}>
             <span
               className="badge"
               style={{
-                backgroundColor: 'rgba(17, 17, 17, 0.06)',
+                backgroundColor: 'rgba(255, 255, 255, 0.06)',
                 padding: '0.45rem 1rem',
                 fontSize: '0.78rem',
               }}
             >
-              <Sparkles size={13} color="#B8912A" />
-              <span className="label-smallcaps" style={{ color: '#111111' }}>
+              <Sparkles size={13} color="#FFFFFF" />
+              <span className="label-smallcaps" style={{ color: '#FFFFFF' }}>
                 One Idea, Many Expressions
               </span>
             </span>
@@ -86,7 +92,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 fontFamily: "'Playfair Display', Georgia, serif",
                 fontSize: 'clamp(2.5rem, 5.2vw, 4.5rem)',
                 lineHeight: 1.12,
-                color: '#111111',
+                color: '#FFFFFF',
                 marginBottom: '1.75rem',
                 fontWeight: 800,
               }}
@@ -97,14 +103,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <p
               style={{
                 fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-                color: '#5A5751',
+                color: '#BFBFBF',
                 lineHeight: 1.6,
                 maxWidth: '780px',
                 marginBottom: '2.5rem',
               }}
             >
-              Nexafrica Group unifies contemporary visual arts, cinema production, culinary heritage, and live cultural
-              gatherings under one commercial infrastructure.
+              Nexafrica Group unifies contemporary visual arts, cinema production, culinary heritage, editorial
+              chronicles, and live cultural gatherings under one commercial infrastructure.
             </p>
 
             {/* CTAs */}
@@ -123,18 +129,28 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </button>
 
               <button
-                onClick={() => onNavigate('partner-invest')}
+                onClick={() => onNavigate('magazine')}
+                className="btn btn-secondary"
+                style={{ padding: '0.9rem 1.85rem' }}
+                id="hero-magazine-btn"
+              >
+                <span>Read NexMagazine</span>
+                <BookOpen size={16} />
+              </button>
+
+              <button
+                onClick={() => onNavigate('partner')}
                 className="btn btn-secondary"
                 style={{ padding: '0.9rem 1.85rem' }}
                 id="hero-partner-btn"
               >
-                <span>Partner / Invest</span>
+                <span>Partner With Us</span>
                 <ArrowUpRight size={16} />
               </button>
             </div>
           </div>
 
-          {/* Stats Bar */}
+          {/* Stats Bar — Majority White on Black, Minority Subsidiary Accents */}
           <div
             style={{
               marginTop: '4.5rem',
@@ -142,41 +158,41 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
               gap: '1.5rem',
               paddingTop: '2.5rem',
-              borderTop: '1px solid rgba(17, 17, 17, 0.08)',
+              borderTop: '1px solid rgba(255, 255, 255, 0.12)',
             }}
           >
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#111111' }}>
-                4
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#FFFFFF' }}>
+                5
               </div>
-              <div className="label-smallcaps" style={{ color: '#8A867E', marginTop: '0.2rem' }}>
-                Active & Upcoming Niches
+              <div className="label-smallcaps" style={{ color: '#808080', marginTop: '0.2rem' }}>
+                Creative Niches & Editorial
               </div>
             </div>
 
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#B8912A' }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#FFFFFF' }}>
                 6 Verbs
               </div>
-              <div className="label-smallcaps" style={{ color: '#8A867E', marginTop: '0.2rem' }}>
+              <div className="label-smallcaps" style={{ color: '#808080', marginTop: '0.2rem' }}>
                 Foundational Doctrine
               </div>
             </div>
 
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#A6192E' }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#FFFFFF' }}>
                 100%
               </div>
-              <div className="label-smallcaps" style={{ color: '#8A867E', marginTop: '0.2rem' }}>
+              <div className="label-smallcaps" style={{ color: '#808080', marginTop: '0.2rem' }}>
                 African Creator Equity
               </div>
             </div>
 
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#2F6B3A' }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 800, color: '#FFFFFF' }}>
                 Nairobi HQ
               </div>
-              <div className="label-smallcaps" style={{ color: '#8A867E', marginTop: '0.2rem' }}>
+              <div className="label-smallcaps" style={{ color: '#808080', marginTop: '0.2rem' }}>
                 Pan-African Reach
               </div>
             </div>
@@ -185,16 +201,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 2. "OUR ECOSYSTEM" SECTION */}
-      <section id="ecosystem-section" className="section-padding" style={{ backgroundColor: '#FFFFFF' }}>
+      <section
+        id="ecosystem-section"
+        className="section-padding"
+        style={{ backgroundColor: '#000000', borderBottom: '1px solid rgba(255, 255, 255, 0.12)' }}
+      >
         <div className="container">
           <div style={{ maxWidth: '720px', marginBottom: '3.5rem' }}>
-            <span className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.5rem', display: 'flex' }}>
+            <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.5rem', display: 'flex' }}>
               <Layers size={13} />
               <span>Dedicated Portals</span>
             </span>
-            <h2>Our Creative Ecosystem</h2>
-            <p style={{ marginTop: '0.65rem' }}>
-              Each niche entity operates with its own distinct aesthetic, leadership, and calls to action while drawing
+            <h2 style={{ color: '#FFFFFF' }}>Our Creative Ecosystem</h2>
+            <p style={{ marginTop: '0.65rem', color: '#BFBFBF' }}>
+              Each niche entity operates with its own distinct identity, leadership, and calls to action while drawing
               strength from the unified Nexafrica Group umbrella.
             </p>
           </div>
@@ -210,7 +230,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                borderLeft: '5px solid #B8912A',
+                borderLeft: '4px solid #B8912A',
                 position: 'relative',
                 overflow: 'hidden',
               }}
@@ -220,8 +240,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <NexLogo variant="art" size="md" />
                   <span className="badge badge-gold">Wealth of Heritage</span>
                 </div>
-                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem' }}>NexArt Africa</h3>
-                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#5A5751' }}>
+                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem', color: '#FFFFFF' }}>NexArt Africa</h3>
+                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#BFBFBF' }}>
                   Discovers and documents Nairobi's emerging visual artists — from studio visits to full exhibitions —
                   connecting their work to collectors and institutions worldwide.
                 </p>
@@ -252,7 +272,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                borderLeft: '5px solid #A6192E',
+                borderLeft: '4px solid #A6192E',
                 position: 'relative',
                 overflow: 'hidden',
               }}
@@ -262,8 +282,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <NexLogo variant="studios" size="md" />
                   <span className="badge badge-red">Energy & Motion</span>
                 </div>
-                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem' }}>NexStudios Africa</h3>
-                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#5A5751' }}>
+                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem', color: '#FFFFFF' }}>NexStudios Africa</h3>
+                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#BFBFBF' }}>
                   A Nairobi-based photo and video production house creating brand content, event coverage, and personal
                   portraiture — built to help African businesses tell their story visually.
                 </p>
@@ -294,7 +314,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                borderLeft: '5px solid #2F6B3A',
+                borderLeft: '4px solid #2F6B3A',
                 position: 'relative',
                 overflow: 'hidden',
               }}
@@ -304,8 +324,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <NexLogo variant="cuisine" size="md" />
                   <span className="badge badge-green">The Land & Growth</span>
                 </div>
-                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem' }}>NexAfriCuisine</h3>
-                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#5A5751' }}>
+                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem', color: '#FFFFFF' }}>NexAfriCuisine</h3>
+                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#BFBFBF' }}>
                   Celebrates African culinary heritage — from home-cooked traditions to modern reinterpretations — through
                   curated content, catering, and cultural storytelling that treats food as identity.
                 </p>
@@ -327,7 +347,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* 4. NexEvents Africa (Once Active) */}
+            {/* 4. NexEvents Africa */}
             <div
               className="card card-hover"
               onClick={() => onNavigate('nexevents-africa')}
@@ -336,21 +356,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                borderLeft: '5px solid #111111',
+                borderLeft: '4px solid #FFFFFF',
                 position: 'relative',
                 overflow: 'hidden',
-                backgroundColor: '#FAF8F5',
               }}
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem' }}>
                   <NexLogo variant="events" size="md" />
-                  <span className="badge" style={{ backgroundColor: '#111111', color: '#F5F3EF' }}>
+                  <span className="badge" style={{ backgroundColor: '#FFFFFF', color: '#000000', fontWeight: 700 }}>
                     Nairobi Calendar
                   </span>
                 </div>
-                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem' }}>NexEvents Africa</h3>
-                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#5A5751' }}>
+                <h3 style={{ fontSize: '1.45rem', marginBottom: '0.65rem', color: '#FFFFFF' }}>NexEvents Africa</h3>
+                <p style={{ fontSize: '0.96rem', lineHeight: 1.6, color: '#BFBFBF' }}>
                   Curates Nairobi's cultural calendar — exhibitions, tastings, galas, and live performances that bring the
                   whole Nexafrica ecosystem to life in person.
                 </p>
@@ -362,7 +381,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  color: '#111111',
+                  color: '#FFFFFF',
                   fontWeight: 600,
                   fontSize: '0.9rem',
                 }}
@@ -375,12 +394,148 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 3. FOUNDER STATEMENT SPOTLIGHT */}
+      {/* 3. NEXMAGAZINE EDITORIAL SPOTLIGHT SECTION */}
+      <section
+        id="magazine-section"
+        className="section-padding"
+        style={{
+          backgroundColor: '#060606',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
+        }}
+      >
+        <div className="container">
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              alignItems: 'flex-end',
+              marginBottom: '3rem',
+              gap: '1.5rem',
+            }}
+          >
+            <div style={{ maxWidth: '680px' }}>
+              <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.5rem', display: 'flex' }}>
+                <BookOpen size={14} />
+                <span>Editorial & Print Publication</span>
+              </span>
+              <h2 style={{ color: '#FFFFFF' }}>NexMagazine</h2>
+              <p style={{ marginTop: '0.5rem', color: '#BFBFBF' }}>
+                Long-form cultural criticism, studio monographs, and visual essays documenting East Africa’s creative
+                vanguard.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('magazine')}
+              className="btn btn-primary"
+              style={{ fontSize: '0.88rem' }}
+            >
+              <span>Explore Magazine Issues</span>
+              <ArrowRight size={15} />
+            </button>
+          </div>
+
+          <div
+            className="card"
+            onClick={() => onNavigate('magazine')}
+            style={{
+              cursor: 'pointer',
+              padding: 'clamp(1.75rem, 3.5vw, 3rem)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '2.5rem',
+              alignItems: 'center',
+              backgroundColor: '#0B0B0B',
+              border: '1px solid rgba(255, 255, 255, 0.18)',
+            }}
+          >
+            <div
+              style={{
+                borderRadius: '6px',
+                overflow: 'hidden',
+                height: '340px',
+                position: 'relative',
+                border: '1px solid rgba(255, 255, 255, 0.14)',
+              }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80"
+                alt="NexMagazine Issue 01"
+                onError={(e) => handleImageError(e)}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(30%) contrast(1.1)' }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  left: '1rem',
+                  backgroundColor: '#000000',
+                  color: '#FFFFFF',
+                  padding: '0.35rem 0.75rem',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.14em',
+                  border: '1px solid rgba(255,255,255,0.25)',
+                }}
+              >
+                ISSUE 01 · VOL. I
+              </div>
+            </div>
+
+            <div>
+              <div style={{ marginBottom: '1rem' }}>
+                <NexLogo variant="magazine" size="sm" />
+              </div>
+              <span className="badge" style={{ marginBottom: '1rem' }}>
+                Inaugural Print & Digital Edition
+              </span>
+              <h3 style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)', marginBottom: '0.85rem', color: '#FFFFFF' }}>
+                The Infrastructure of Imagination
+              </h3>
+              <p style={{ color: '#BFBFBF', marginBottom: '1.5rem', lineHeight: 1.65 }}>
+                Featuring studio visits in Kilimani, the new cinema of the Swahili Coast, and culinary essays on
+                fermentation, memory, and fire across the African continent.
+              </p>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.6rem',
+                  marginBottom: '1.75rem',
+                }}
+              >
+                <span className="badge badge-gold">Visual Art Monograph</span>
+                <span className="badge badge-red">Cinema & Motion Essay</span>
+                <span className="badge badge-green">Culinary Lineage</span>
+              </div>
+
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  color: '#FFFFFF',
+                  fontWeight: 700,
+                  fontSize: '0.92rem',
+                }}
+              >
+                <span>Read Issue 01 Dispatches</span>
+                <ArrowRight size={16} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FOUNDER STATEMENT SPOTLIGHT */}
       <section
         className="section-padding"
         style={{
-          backgroundColor: '#111111',
-          color: '#F5F3EF',
+          backgroundColor: '#000000',
+          color: '#FFFFFF',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
           position: 'relative',
         }}
       >
@@ -397,7 +552,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           >
             <span
               className="label-smallcaps"
-              style={{ color: '#B8912A', letterSpacing: '0.22em', marginBottom: '1.5rem' }}
+              style={{ color: '#FFFFFF', opacity: 0.75, letterSpacing: '0.22em', marginBottom: '1.5rem' }}
             >
               The Nexafrica Premise
             </span>
@@ -408,7 +563,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 fontSize: 'clamp(1.5rem, 3.2vw, 2.4rem)',
                 lineHeight: 1.35,
                 fontWeight: 600,
-                color: '#F5F3EF',
+                color: '#FFFFFF',
                 marginBottom: '2rem',
                 fontStyle: 'italic',
               }}
@@ -419,7 +574,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </blockquote>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.1rem', letterSpacing: '0.04em', color: '#F5F3EF' }}>
+              <div style={{ fontWeight: 700, fontSize: '1.1rem', letterSpacing: '0.04em', color: '#FFFFFF' }}>
                 Francis Kimathi
               </div>
               <div className="label-smallcaps" style={{ color: '#B8912A' }}>
@@ -430,9 +585,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 4. RECENT EVENT HIGHLIGHTS */}
+      {/* 5. RECENT EVENT HIGHLIGHTS */}
       {recentEvents.length > 0 && (
-        <section className="section-padding" style={{ backgroundColor: '#F5F3EF' }}>
+        <section className="section-padding" style={{ backgroundColor: '#000000', borderBottom: '1px solid rgba(255, 255, 255, 0.12)' }}>
           <div className="container">
             <div
               style={{
@@ -445,11 +600,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               }}
             >
               <div>
-                <span className="label-smallcaps" style={{ color: '#111111', marginBottom: '0.4rem', display: 'flex' }}>
+                <span className="label-smallcaps" style={{ color: '#FFFFFF', marginBottom: '0.4rem', display: 'flex' }}>
                   <Calendar size={13} />
                   <span>Cultural Momentum</span>
                 </span>
-                <h2>Recent & Upcoming Events</h2>
+                <h2 style={{ color: '#FFFFFF' }}>Recent & Upcoming Events</h2>
               </div>
 
               <button
@@ -464,27 +619,38 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
             <div className="grid-3">
               {recentEvents.map((evt) => (
-                <div key={evt.id} className="card card-hover" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div
+                  key={evt.id}
+                  className="card card-hover"
+                  style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+                >
                   <div>
                     {evt.image_url && (
                       <div style={{ borderRadius: '6px', overflow: 'hidden', height: '180px', marginBottom: '1.25rem' }}>
-                        <img src={evt.image_url} alt={evt.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img
+                          src={resolveImageUrl(evt.image_url, evt.title)}
+                          alt={evt.title}
+                          onError={(e) => handleImageError(e)}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
                       </div>
                     )}
                     <span className="badge" style={{ marginBottom: '0.65rem' }}>
                       {evt.category}
                     </span>
-                    <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif" }}>
+                    <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
                       {evt.title}
                     </h4>
-                    <p style={{ fontSize: '0.88rem', color: '#5A5751', lineHeight: 1.5 }}>
+                    <p style={{ fontSize: '0.88rem', color: '#BFBFBF', lineHeight: 1.5 }}>
                       {evt.short_description}
                     </p>
                   </div>
 
-                  <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(17,17,17,0.08)', fontSize: '0.82rem', color: '#8A867E' }}>
+                  <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', fontSize: '0.82rem', color: '#808080' }}>
                     <div>📍 {evt.location}</div>
-                    <div style={{ marginTop: '0.25rem' }}>📅 {new Date(evt.event_date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+                    <div style={{ marginTop: '0.25rem' }}>
+                      📅 {new Date(evt.event_date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -493,12 +659,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </section>
       )}
 
-      {/* 5. CALL TO ACTION: PARTNER & GENERAL INQUIRY */}
-      <section className="section-padding" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+      {/* 6. CALL TO ACTION: PARTNER & GENERAL INQUIRY (No Public Investor Section) */}
+      <section className="section-padding" style={{ backgroundColor: '#000000' }}>
         <div className="container">
           <div
             style={{
-              backgroundColor: '#EDEAE4',
+              backgroundColor: '#0B0B0B',
+              border: '1px solid rgba(255, 255, 255, 0.16)',
               borderRadius: '16px',
               padding: 'clamp(2.5rem, 5vw, 4.5rem)',
               display: 'flex',
@@ -507,32 +674,32 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               textAlign: 'center',
             }}
           >
-            <span className="label-smallcaps" style={{ color: '#111111', letterSpacing: '0.18em', marginBottom: '1rem' }}>
+            <span className="label-smallcaps" style={{ color: '#FFFFFF', letterSpacing: '0.18em', marginBottom: '1rem' }}>
               Building the Future of African Storytelling
             </span>
-            <h2 style={{ fontSize: 'clamp(2rem, 3.8vw, 3rem)', maxWidth: '720px', marginBottom: '1.25rem' }}>
-              Ready to collaborate, invest, or join our creator ecosystem?
+            <h2 style={{ fontSize: 'clamp(2rem, 3.8vw, 3rem)', maxWidth: '720px', marginBottom: '1.25rem', color: '#FFFFFF' }}>
+              Ready to collaborate, partner, or join our creator ecosystem?
             </h2>
-            <p style={{ maxWidth: '620px', marginBottom: '2.5rem', color: '#5A5751', fontSize: '1.05rem' }}>
-              Whether you are an emerging artist, student innovator, prospective investor, or cultural institution, we
+            <p style={{ maxWidth: '620px', marginBottom: '2.5rem', color: '#BFBFBF', fontSize: '1.05rem' }}>
+              Whether you are an emerging visual artist, student creator, brand collaborator, or cultural institution, we
               welcome visionary partners to build with us.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
               <button
-                onClick={() => onNavigate('partner-invest')}
+                onClick={() => onNavigate('partner')}
                 className="btn btn-primary"
                 style={{ padding: '0.9rem 1.85rem' }}
                 id="cta-partner-btn"
               >
-                <span>Partner / Invest Portal</span>
+                <span>Partner Portal</span>
                 <ArrowRight size={16} />
               </button>
 
               <button
                 onClick={() => onNavigate('contact')}
                 className="btn btn-secondary"
-                style={{ padding: '0.9rem 1.85rem', backgroundColor: '#FFFFFF' }}
+                style={{ padding: '0.9rem 1.85rem' }}
                 id="cta-contact-btn"
               >
                 <span>General Contact</span>

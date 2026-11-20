@@ -42,7 +42,7 @@ export const ArtistSubmissionModal: React.FC<Props> = ({ isOpen, onClose }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#5A5751' }}
+          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: '#BFBFBF' }}
           aria-label="Close modal"
         >
           <X size={20} />
@@ -51,10 +51,10 @@ export const ArtistSubmissionModal: React.FC<Props> = ({ isOpen, onClose }) => {
         {success ? (
           <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
             <CheckCircle size={52} color="#B8912A" style={{ margin: '0 auto 1.25rem' }} />
-            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif" }}>
+            <h3 style={{ marginBottom: '0.75rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
               Submission Received
             </h3>
-            <p style={{ color: '#5A5751', marginBottom: '2rem' }}>
+            <p style={{ color: '#BFBFBF', marginBottom: '2rem' }}>
               Thank you for sharing your artistic vision with NexArt Africa. Our curatorial review board meets bi-weekly
               to review studio portfolios and exhibition submissions.
             </p>
@@ -69,8 +69,8 @@ export const ArtistSubmissionModal: React.FC<Props> = ({ isOpen, onClose }) => {
                 <Sparkles size={13} />
                 <span>NexArt Africa Curatorial Review</span>
               </span>
-              <h3 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif" }}>Submit Your Work</h3>
-              <p style={{ fontSize: '0.92rem', color: '#5A5751', marginTop: '0.35rem' }}>
+              <h3 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>Submit Your Work</h3>
+              <p style={{ fontSize: '0.92rem', color: '#BFBFBF', marginTop: '0.35rem' }}>
                 We discover and document Nairobi's emerging visual artists — connecting your creations to collectors and
                 curators worldwide.
               </p>
